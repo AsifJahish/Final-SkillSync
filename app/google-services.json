@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100618654071",
+    "project_id": "finalskillsync",
+    "storage_bucket": "finalskillsync.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100618654071:android:847593bb2e68968e341172",
+        "android_client_info": {
+          "package_name": "com.example.finalskillsync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDsFQnO-YtJ7bcGfemSvzHJhfLA5fqAF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

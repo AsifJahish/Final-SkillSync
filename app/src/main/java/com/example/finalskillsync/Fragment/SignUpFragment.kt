@@ -32,15 +32,8 @@ class SignUpFragment : Fragment() {
 
         binding.signUpButton.setOnClickListener {
           saveUser()
+            loginTranscation()
 
-
-            // Replace the current fragment with the new loginFragment
-            val loginFragment = LoginFragment()
-            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-            fragmentManager.beginTransaction()
-                .replace(R.id.frameContainer, loginFragment)
-                .addToBackStack(null) // This allows the user to go back to the previous fragment when pressing the back button
-                .commit()
         }
     }
     companion object {
@@ -57,24 +50,29 @@ class SignUpFragment : Fragment() {
         val phoneNumber = binding.phoneNumberEditText.text.toString().toInt()
 
         if (name.isEmpty() && email.isEmpty() && password.isEmpty()) {
-            Toast.makeText(context, "Name is empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "empty", Toast.LENGTH_SHORT).show()
             return
         }
-
-
-
         val newUser = Users()
         val id = newUser.userId
         val users = Users(id, name, email, phoneNumber,password, )
         dbref.child(id.toString()).setValue(users)
             .addOnCompleteListener {
                 Toast.makeText(context, "User registration completed", Toast.LENGTH_SHORT).show()
-
-                // Replace the current SignUpFragment with the loginFragment
             }
             .addOnFailureListener { err ->
                 Toast.makeText(context, "Error: ${err.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun loginTranscation(){
+
+        val loginFragment = LoginFragment()
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.frameContainer, loginFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 }
