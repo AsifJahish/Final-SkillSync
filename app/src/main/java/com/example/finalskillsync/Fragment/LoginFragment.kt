@@ -14,16 +14,12 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout using View Binding
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-
         return binding.root
     }
 
@@ -34,7 +30,6 @@ class LoginFragment : Fragment() {
             fragmentTransaction()
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -48,7 +43,6 @@ class LoginFragment : Fragment() {
             LoginFragment().apply {
             }
     }
-
     private fun fragmentTransaction(){
         val fragment = SignUpFragment() // Instantiate the destination fragment
         val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
