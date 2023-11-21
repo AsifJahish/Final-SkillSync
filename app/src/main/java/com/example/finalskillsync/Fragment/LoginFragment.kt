@@ -40,7 +40,11 @@ class LoginFragment : Fragment() {
         }
         binding.loginButton.setOnClickListener {
             getUsers()
-            travelToHome()
+
+        }
+        binding.forgotPasswordTextView.setOnClickListener {
+            travelToForgot()
+
         }
     }
 
@@ -71,6 +75,13 @@ class LoginFragment : Fragment() {
         transaction.commit()
 
     }
+    private fun travelToForgot(){
+        val fragment= ForgotFragment()
+        val transaction: FragmentTransaction= requireFragmentManager().beginTransaction()
+        transaction.replace(R.id.frameContainer, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 
     private fun getUsers(){
 
@@ -79,15 +90,18 @@ class LoginFragment : Fragment() {
 
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditTextL.text.toString()
-            dbref.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+        dbref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (userSnapshot in dataSnapshot.children) {
                         val user = userSnapshot.getValue(Users::class.java)
                         if (user?.email == email && user.password == password) {
-
+                            Toast.makeText(requireContext(), "successful", Toast.LENGTH_SHORT).show()
+                           travelToHome()
                         }
+
                     }
+                    Toast.makeText(requireContext(), "wrong email or Password", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {

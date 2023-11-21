@@ -30,6 +30,8 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         dbref = FirebaseDatabase.getInstance().reference.child("Users")
 
+
+
         binding.signUpButton.setOnClickListener {
           saveUser()
             loginTranscation()
