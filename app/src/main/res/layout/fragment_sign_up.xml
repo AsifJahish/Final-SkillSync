@@ -10,7 +10,6 @@
         android:id="@+id/logoImageView"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:src="@drawable/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/nameEditText"
         app:layout_constraintStart_toStartOf="parent"

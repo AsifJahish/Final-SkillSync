@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.finalskillsync.Firebase.Users
+import com.example.finalskillsync.HomeActivity
 import com.example.finalskillsync.R
 import com.example.finalskillsync.databinding.ActivityMainBinding
 import com.example.finalskillsync.databinding.FragmentLoginBinding
@@ -74,11 +75,8 @@ class LoginFragment : Fragment() {
         transaction.commit()
     }
     private fun travelToHome(){
-        val fragment = HomeFragment() // Instantiate the destination fragment
-        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.frameContainer, fragment)
-        transaction.addToBackStack(null) // Optional: add the transaction to the back stack
-        transaction.commit()
+        val intent = Intent(activity, HomeActivity::class.java)
+        startActivity(intent)
 
     }
     private fun travelToForgot(){
