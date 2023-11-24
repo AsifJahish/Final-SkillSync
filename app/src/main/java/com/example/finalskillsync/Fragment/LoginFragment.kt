@@ -15,6 +15,7 @@ import com.example.finalskillsync.HomeActivity
 import com.example.finalskillsync.R
 import com.example.finalskillsync.databinding.ActivityMainBinding
 import com.example.finalskillsync.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,6 +26,8 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var dbref: DatabaseReference
+
+//    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +40,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.singUpButton.setOnClickListener {
             fragmentTransaction()
@@ -87,33 +91,33 @@ class LoginFragment : Fragment() {
         transaction.commit()
     }
 
-    private fun getUsers(){
 
-
-        dbref = FirebaseDatabase.getInstance().reference.child("Users")
-
+    private fun getUsers() {
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditTextL.text.toString()
 
-        dbref.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (userSnapshot in dataSnapshot.children) {
-                        val user = userSnapshot.getValue(Users::class.java)
-                        if (user?.email == email && user.password == password) {
-                            Toast.makeText(requireContext(), "successful", Toast.LENGTH_SHORT).show()
-                           travelToHome()
-                        }
-
-                    }
-                    Toast.makeText(requireContext(), "wrong email or Password", Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Handle database error
-                    Toast.makeText(requireContext(), "Database error: " + databaseError.message, Toast.LENGTH_SHORT).show()
-                }
-            })
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(requireContext(), "Email and password are required", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        // Authenticate the user using Firebase Authentication
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // User login is successful
+                    Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                    travelToHome()
+                } else {
+                    // If sign-in fails, display a message to the user.
+                    Toast.makeText(requireContext(), "Authentication failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                // Handle exceptions that may occur during the authentication process
+                Toast.makeText(requireContext(), "Authentication failed. ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
 
     private fun logoPicture(){
         context?.let {

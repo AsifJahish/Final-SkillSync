@@ -45,7 +45,6 @@ class ForgotFragment : Fragment() {
                                 "Password reset email has been sent to your email",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            requireActivity().finish()
                         } else {
                             Toast.makeText(
                                 requireContext(),
