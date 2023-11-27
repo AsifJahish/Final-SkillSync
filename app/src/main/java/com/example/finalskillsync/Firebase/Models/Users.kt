@@ -1,4 +1,4 @@
-package com.example.finalskillsync.Firebase
+package com.example.finalskillsync.Firebase.Models
 
 import kotlin.random.Random
 

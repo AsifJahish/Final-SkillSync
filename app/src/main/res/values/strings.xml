@@ -6,4 +6,6 @@
     <string name="welcome_logo_description">Welcome Logo</string>
     <string name="welcome_message">Welcome to our App!</string>
     <string name="get_started">Get Started</string>
+
+    <string name="API_Key">8955a20a360040a7b96f10b11a8710a9</string>
 </resources>

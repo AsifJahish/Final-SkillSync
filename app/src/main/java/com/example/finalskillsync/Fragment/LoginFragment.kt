@@ -6,21 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
-import com.example.finalskillsync.Firebase.Users
 import com.example.finalskillsync.HomeActivity
 import com.example.finalskillsync.R
-import com.example.finalskillsync.databinding.ActivityMainBinding
 import com.example.finalskillsync.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null

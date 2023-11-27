@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
-import com.example.finalskillsync.Firebase.Users
+import com.example.finalskillsync.Firebase.Models.Users
 import com.example.finalskillsync.R
-import com.example.finalskillsync.databinding.FragmentLoginBinding
 import com.example.finalskillsync.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
