@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalskillsync.API.Recipes
+import com.example.finalskillsync.API.Model.TodoList
 import com.example.finalskillsync.API.Request.RetrofitClient
 import com.example.finalskillsync.Adatpers.RandomAdapter
 
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             try {
-                val response: Response<List<Recipes>> = RetrofitClient.api.callRandomRecipe()
+                val response: Response<List<TodoList>> = RetrofitClient.api.getALl()
 
                 if (response.isSuccessful && response.body() != null) {
                     val recipeList = response.body()!!
