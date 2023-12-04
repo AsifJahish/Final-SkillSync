@@ -6,30 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalskillsync.API.Model.TodoList
-import com.example.finalskillsync.API.Request.RetrofitClient
-import com.example.finalskillsync.Adatpers.RandomAdapter
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.finalskillsync.API.Model.Meme
+import com.example.finalskillsync.API.Request.RetrofitInstance
+import com.example.finalskillsync.Adatpers.RvAdapter
 
 import com.example.finalskillsync.databinding.FragmentHomeBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Response
+import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
 
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var recipeAdapter: RandomAdapter
+    private lateinit var rvAdapter: RvAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout using View Binding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,40 +37,41 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        recipeAdapter = RandomAdapter(requireContext())
-        binding.randomRcycleView.apply {
-            adapter = recipeAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
+        // Your additional code here
 
 
-        lifecycleScope.launch {
-            try {
-                val response: Response<List<TodoList>> = RetrofitClient.api.getALl()
+        GlobalScope.launch(Dispatchers.IO) {
+            val response = try {
+                RetrofitInstance.api.getMemes()
 
-                if (response.isSuccessful && response.body() != null) {
-                    val recipeList = response.body()!!
-                    recipeAdapter.setRecipes(recipeList)
-                } else {
-                    Toast.makeText(requireContext(), "Unsuccessful response", Toast.LENGTH_LONG).show()
-                }
             } catch (e: IOException) {
-                Toast.makeText(requireContext(), "App error ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "app error ${e.message}", Toast.LENGTH_SHORT)
+                    .show()
+                return@launch
             } catch (e: HttpException) {
-                Toast.makeText(requireContext(), "HTTP error ${e.message}", Toast.LENGTH_LONG).show()
-            } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Unexpected error ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "http error: ${e.message}", Toast.LENGTH_SHORT)
+                    .show()
+                return@launch
+            }
+            if (response.isSuccessful && response.body() != null) {
+                withContext(Dispatchers.Main) {
+                    val memesList: List<Meme> = response.body()!!.data.memes
+                    binding.apply {
+                        /*progressBar.visibility = View.GONE*/
+                        rvAdapter = RvAdapter(memesList)
+                        binding.rcycleView.adapter = rvAdapter
+                        binding.rcycleView.layoutManager =
+                            StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+                    }
+                }
             }
         }
-}
-
-    companion object {
-
-        fun newInstance() =
-            HomeFragment().apply {
-            }
     }
 
 
+    companion object {
+        fun newInstance() = HomeFragment().apply {
+            // You can still perform any initialization here if needed
+        }
+    }
 }

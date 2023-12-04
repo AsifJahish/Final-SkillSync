@@ -40,6 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -86,6 +87,16 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.7.0")
+// Coroutine Lifecycle Scopes
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation ("com.squareup.picasso:picasso:2.8")
+
+
 
 
 }
