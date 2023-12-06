@@ -26,7 +26,7 @@ class RvAdapter(private val memeList: List<Meme>) : RecyclerView.Adapter<RvAdapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = memeList[position]
         holder.binding.apply {
-            textView.text = currentItem.name
+  /*          textView.text = currentItem.name*/
             Picasso.get().load(currentItem.url).into(imageView)
         }
     }
