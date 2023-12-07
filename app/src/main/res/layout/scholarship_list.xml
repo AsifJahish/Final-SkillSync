@@ -42,14 +42,14 @@
         android:layout_marginBottom="3dp"
         android:src="@drawable/rounded_corner"
 
-        app:layout_constraintBottom_toTopOf="@+id/title_detail"
+        app:layout_constraintBottom_toTopOf="@+id/titleOpp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rectangle_1" />
 
     <TextView
-        android:id="@+id/title_detail"
+        android:id="@+id/titleOpp"
         android:layout_width="263dp"
         android:layout_height="15dp"
         android:layout_alignParentLeft="true"
@@ -91,16 +91,11 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:src="@drawable/chat"
-            android:background="b"
+
 
             />
     </LinearLayout>
 
-
-
-
-
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

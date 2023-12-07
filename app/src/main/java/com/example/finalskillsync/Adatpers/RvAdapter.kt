@@ -7,7 +7,7 @@ import com.example.finalskillsync.API.Model.Quotes
 import com.example.finalskillsync.databinding.RvItemBinding
 
 
-class RvAdapter(private val memeList: List<Quotes>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+class RvAdapter(private val quotesList: List<Quotes>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -18,11 +18,11 @@ class RvAdapter(private val memeList: List<Quotes>) : RecyclerView.Adapter<RvAda
     }
 
     override fun getItemCount(): Int {
-        return memeList.size
+        return quotesList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = memeList[position]
+        val currentItem = quotesList[position]
         holder.binding.apply {
             textView.text = currentItem.text
             authortext.text= currentItem.author
