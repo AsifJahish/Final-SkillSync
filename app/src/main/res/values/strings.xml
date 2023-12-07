@@ -8,4 +8,8 @@
     <string name="get_started">Get Started</string>
 
     <string name="API_Key">8955a20a360040a7b96f10b11a8710a9</string>
+
+    <!-- strings.xml -->
+    <string name="title">Title </string>
+
 </resources>
