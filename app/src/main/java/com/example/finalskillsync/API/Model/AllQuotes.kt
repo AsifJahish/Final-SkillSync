@@ -1,5 +1,5 @@
 package com.example.finalskillsync.API.Model
 
-class AllQuotes (
+data class AllQuotes (
     val quotes: List<Quotes>
 )

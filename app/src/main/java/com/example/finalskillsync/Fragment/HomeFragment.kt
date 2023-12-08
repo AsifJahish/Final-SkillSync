@@ -1,6 +1,7 @@
 package com.example.finalskillsync.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +13,13 @@ import com.example.finalskillsync.API.Model.Quotes
 import com.example.finalskillsync.API.Request.RetrofitInstance
 import com.example.finalskillsync.Adatpers.OppAdapter
 import com.example.finalskillsync.Adatpers.RvAdapter
+import com.example.finalskillsync.Adatpers.ScholarshipsAdapter
 import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.google.firebase.database.FirebaseDatabase
 import com.example.finalskillsync.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
@@ -25,16 +28,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.ArrayList
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvAdapter: RvAdapter
-    private lateinit var dbref: DatabaseReference
-    private val oppList: MutableList<Opportunity> = mutableListOf()
-    private val oppAdapter = OppAdapter(oppList)
+    private lateinit var oppAdapter: OppAdapter
+    private lateinit var oppRef: DatabaseReference
+
+    companion object {
+        fun newInstance() =
+            HomeFragment.apply {
+                // You can still perform any initialization here if needed
+            }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,41 +55,49 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView: RecyclerView = binding.doRecycleView
-        recyclerView.adapter = OppAdapter(oppList)
+
+
+
         getQuotes()
         getOpp()
 
     }
 
 
-    private fun getOpp(){
+    private fun getOpp() {
+        oppRef = FirebaseDatabase.getInstance().getReference("Opportunity")
+        oppAdapter = OppAdapter(requireContext(), mutableListOf())
+        binding.oppRecycleView.adapter = oppAdapter
 
-        dbref = FirebaseDatabase.getInstance().getReference("Opportunity")
+        // Set up the layout manager for vertical display
+        binding.oppRecycleView.layoutManager = LinearLayoutManager(requireContext())
 
 
-        dbref.addValueEventListener(object : ValueEventListener {
+        oppRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                oppList.clear()
-                if (snapshot.exists()) {
-                    for (booksnap in snapshot.children) {
-                        val bookData = booksnap.getValue(Opportunity::class.java)
-                        bookData?.let {
+                val oppList = mutableListOf<Opportunity>()
+
+                for (oppSnapshot in snapshot.children) {
+                    try {
+                        val opportunity = oppSnapshot.getValue(Opportunity::class.java)
+                        opportunity?.let {
                             oppList.add(it)
                         }
+                    } catch (e: DatabaseException) {
+                        Log.e("HomeFragment", "Error converting Opportunity", e)
                     }
-                    oppAdapter.notifyDataSetChanged()
                 }
+
+                Log.d("HomeFragment", "Number of opportunities: ${oppList.size}")
+
+                oppAdapter.updateData(oppList)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Handle the cancellation if needed
+                Log.e("HomeFragment", "Database error: ${error.message}")
             }
         })
-
     }
-
-
 
 
 
@@ -120,10 +136,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-    companion object {
-        fun newInstance() = HomeFragment().apply {
-            // You can still perform any initialization here if needed
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
+
+

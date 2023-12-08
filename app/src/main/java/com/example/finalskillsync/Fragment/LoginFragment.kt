@@ -76,6 +76,7 @@ class LoginFragment : Fragment() {
         startActivity(intent)
 
     }
+
     private fun travelToForgot(){
         val fragment= ForgotFragment()
         val transaction: FragmentTransaction= requireFragmentManager().beginTransaction()
@@ -124,3 +125,10 @@ class LoginFragment : Fragment() {
     }
 
 }
+
+/*
+private fun activity2(){
+    val intent = Intent(activity, MainActivity2::class.java)
+    startActivity(intent)
+
+}*/

@@ -1,9 +1,20 @@
 package com.example.finalskillsync.Firebase.Models
 
+import com.example.finalskillsync.Adatpers.ScholarshipsAdapter
+import kotlin.random.Random
+
 data class Opportunity (
-    var title: String? = null,
+    var oppId:Long= generateRandomOppId(),
+    var benefit: String? = null,
+    var deadline: String? = null,
     var level: String? = null,
     var link: String? = null,
-    var benefit: String? = null,
-    var deadline: String?= null,
+    var title: String?= null,
 )
+{
+    companion object {
+        fun generateRandomOppId(): Long {
+            return Random.nextLong(1000000L, 9999999L)
+        }
+    }
+}
