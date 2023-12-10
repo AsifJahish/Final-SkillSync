@@ -15,4 +15,6 @@
     <string name="benefit">benefit </string>
     <string name="link">link </string>
     <string name="deadline">deadline </string>
+
+    <string name="full_name">Full Name</string>
 </resources>

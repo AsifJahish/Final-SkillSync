@@ -1,0 +1,7 @@
+<resources>
+    <style name="opportunity">
+        <item name="android:fontFamily">@font/sansita</item>
+        <item name="android:textSize">49sp</item>
+        <item name="android:textColor">#212477</item>
+    </style>
+</resources>
