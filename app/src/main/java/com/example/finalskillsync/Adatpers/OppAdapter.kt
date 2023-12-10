@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Firebase.Models.Opportunity
+import com.example.finalskillsync.Fragment.ChatFragment
 
 import com.example.finalskillsync.Fragment.OppDetailFragment
 import com.example.finalskillsync.databinding.OppListBinding
@@ -48,6 +49,13 @@ class OppAdapter(
                     detailFragment.arguments = bundle
                     toDetail()
                 }
+                chat.setOnClickListener{
+                    val bundle = Bundle()
+                    bundle.putString("Title", current.title)
+                    val detailFragment = OppDetailFragment()
+                    detailFragment.arguments = bundle
+                    toChat()
+                }
             }
         }
     }
@@ -61,19 +69,25 @@ class OppAdapter(
 
         private fun toDetail(){
             val fragment = OppDetailFragment()
-
-
-            // Get the fragmentManager
             val fragmentManager = (context as AppCompatActivity).supportFragmentManager
 
-            // Replace the fragment_container with the new fragment
             fragmentManager.beginTransaction()
                 .replace(R.id.homeFrame, fragment)
-                .addToBackStack(null) // Add to back stack so the user can navigate back
+                .addToBackStack(null)
                 .commit()
 
         }
 
+    private fun toChat(){
+        val fragment = ChatFragment()
+        val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.homeFrame, fragment)
+            .addToBackStack(null)
+            .commit()
+
+    }
 
 
 }

@@ -92,7 +92,7 @@ class OppDetailFragment : Fragment() {
                                     linkSpannable.length,
                                     0
                                 )
-                      /*          val link1 = binding.link.text = linkSpannable*/
+                                binding.link.text = linkSpannable
 
                                 binding.link.setOnClickListener {
                                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(linkText))
