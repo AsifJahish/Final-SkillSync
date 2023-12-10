@@ -1,6 +1,5 @@
 package com.example.finalskillsync.Firebase.Models
 
-import com.example.finalskillsync.Adatpers.ScholarshipsAdapter
 import kotlin.random.Random
 
 data class Opportunity (

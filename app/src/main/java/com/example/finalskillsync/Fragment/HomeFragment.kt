@@ -13,8 +13,8 @@ import com.example.finalskillsync.API.Model.Quotes
 import com.example.finalskillsync.API.Request.RetrofitInstance
 import com.example.finalskillsync.Adatpers.OppAdapter
 import com.example.finalskillsync.Adatpers.RvAdapter
-import com.example.finalskillsync.Adatpers.ScholarshipsAdapter
 import com.example.finalskillsync.Firebase.Models.Opportunity
+import com.example.finalskillsync.R
 import com.google.firebase.database.FirebaseDatabase
 import com.example.finalskillsync.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
@@ -62,6 +62,9 @@ class HomeFragment : Fragment() {
         getOpp()
 
     }
+
+
+
 
 
     private fun getOpp() {

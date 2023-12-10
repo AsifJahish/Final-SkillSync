@@ -11,5 +11,8 @@
 
     <!-- strings.xml -->
     <string name="title">Title </string>
-
+    <string name="level">level </string>
+    <string name="benefit">benefit </string>
+    <string name="link">link </string>
+    <string name="deadline">deadline </string>
 </resources>

@@ -53,7 +53,7 @@ private lateinit var auth: FirebaseAuth
         val name = binding.nameEditText.text.toString()
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
-        val phoneNumber = binding.phoneNumberEditText.text.toString().toInt()
+        val phoneNumber = binding.phoneNumberEditText.text.toString()
 
         if (name.isEmpty() && email.isEmpty() && password.isEmpty()) {
             Toast.makeText(context, "empty", Toast.LENGTH_SHORT).show()

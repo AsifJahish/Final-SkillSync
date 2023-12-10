@@ -6,7 +6,7 @@ data class Users(
     var userId: Long = generateRandomUserId(),
     var name: String? = null,
     var email: String? = null,
-    var phoneNumebr: Int?= null,
+    var phoneNumebr: String?= null,
     var password: String? = null,
 ) {
     companion object {
