@@ -105,6 +105,7 @@ class LoginFragment : Fragment() {
                     bundle.putString("Email", email)
                     val chatFragment = ChatFragment()
                     chatFragment.arguments = bundle
+                    Toast.makeText(requireContext(), "$email", Toast.LENGTH_SHORT).show()
                     travelToHome()
                 } else {
                     // If sign-in fails, display a message to the user.

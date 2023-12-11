@@ -1,6 +1,5 @@
 package com.example.finalskillsync.Fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.finalskillsync.Firebase.Models.Chat
 import com.example.finalskillsync.Firebase.Models.Users
-import com.example.finalskillsync.R
+
 import com.example.finalskillsync.databinding.FragmentChatBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -53,6 +52,39 @@ class ChatFragment : Fragment() {
     }
 
 
+
+    private fun getIDName(callback: (userName: String?, userId: Long?) -> Unit) {
+        val email = arguments?.getString("Email") ?: ""
+        val databaseRef = FirebaseDatabase.getInstance().reference.child("Users")
+        val userRef = databaseRef.child(email)
+
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val user = snapshot.getValue(Users::class.java)
+                    val userName = user?.name
+                    val userId = user?.userId
+
+                    Toast.makeText(requireContext(), "$email, $userName, $userId", Toast.LENGTH_SHORT).show()
+
+                    callback(userName, userId)
+                } else {
+                    // Handle the case when the snapshot doesn't exist
+                    callback(null, null)
+                }
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle database error
+                callback(null, null)
+            }
+        })
+    }
+
+
+
+
     private fun sendMessage() {
         val title = arguments?.getString("Title") ?: ""
         val databaseRef = FirebaseDatabase.getInstance().reference.child("Chat")
@@ -87,36 +119,5 @@ class ChatFragment : Fragment() {
             }
         }
     }
-
-
-    private fun getIDName(callback: (userName: String?, userId: Long?) -> Unit) {
-        val email = arguments?.getString("Email") ?: ""
-        val databaseRef = FirebaseDatabase.getInstance().reference.child("Users")
-        val userRef = databaseRef.child(email)
-
-        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val user = snapshot.getValue(Users::class.java)
-                    val userName = user?.name
-                    val userId = user?.userId
-
-                    Toast.makeText(requireContext(), "$email, $userName, $userId", Toast.LENGTH_SHORT).show()
-
-                    callback(userName, userId)
-                } else {
-                    // Handle the case when the snapshot doesn't exist
-                    callback(null, null)
-                }
-            }
-
-
-            override fun onCancelled(error: DatabaseError) {
-                // Handle database error
-                callback(null, null)
-            }
-        })
-    }
-
 
 }
