@@ -101,6 +101,10 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // User login is successful
                     Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                    val bundle = Bundle()
+                    bundle.putString("Email", email)
+                    val chatFragment = ChatFragment()
+                    chatFragment.arguments = bundle
                     travelToHome()
                 } else {
                     // If sign-in fails, display a message to the user.

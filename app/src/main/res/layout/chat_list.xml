@@ -14,7 +14,7 @@
         android:background="@android:color/transparent"
         android:backgroundTint="@android:color/transparent"
         android:foregroundGravity="top"
-        app:cardCornerRadius="1dp"
+        app:cardCornerRadius="100dp"
         app:cardElevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.722">
 
         <TextView
-            android:id="@+id/commentMessage"
+            android:id="@+id/Message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Message"
@@ -43,24 +43,12 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/commentIcon"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="5dp"
-        android:src="@drawable/send_icon_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/commentText"
+        android:id="@+id/senderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/full_name"
         android:textAppearance="@style/opportunity"
@@ -72,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <TextView
         android:id="@+id/time"
