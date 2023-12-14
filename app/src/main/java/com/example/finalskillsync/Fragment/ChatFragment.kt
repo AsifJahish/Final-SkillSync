@@ -8,19 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.finalskillsync.Adatpers.ChatAdapter
+import com.example.finalskillsync.Adatpers.OppAdapter
 import com.example.finalskillsync.Firebase.Models.Chat
+import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.Firebase.Models.Users
 import com.example.finalskillsync.databinding.FragmentChatBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
 class ChatFragment : Fragment() {
-    private val databaseRef = FirebaseDatabase.getInstance().reference
-
+    private lateinit var chatRef: DatabaseReference
+    private lateinit var chatAdapter: ChatAdapter
     private var _binding: FragmentChatBinding? = null
     private lateinit var database: DatabaseReference
     private val binding get() = _binding!!
@@ -50,6 +55,7 @@ class ChatFragment : Fragment() {
 
             sendMessage()
         }
+        getChat()
         getIDName()
     }
 
@@ -115,8 +121,7 @@ class ChatFragment : Fragment() {
                             "Comment saved successfully",
                             Toast.LENGTH_SHORT
                         ).show()
-
-
+                        getChat()
                     }.addOnFailureListener { exception ->
                         Toast.makeText(
                             requireContext(),
@@ -128,23 +133,51 @@ class ChatFragment : Fragment() {
         }
     }
 
+    private fun getChat(){
+        chatRef = FirebaseDatabase.getInstance().getReference("Chat")
+        chatAdapter = ChatAdapter(requireContext(), mutableListOf())
+        binding.recycleviewMessages.adapter = chatAdapter
+        val title = arguments?.getString("titleForChat") ?: ""
+        // Set up the layout manager for vertical display
+        binding.recycleviewMessages.layoutManager = LinearLayoutManager(requireContext())
+
+
+        chatRef.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val chatList = mutableListOf<Chat>()
+
+                for (oppSnapshot in snapshot.children) {
+                    try {
+                        val chat = oppSnapshot.getValue(Chat::class.java)
+                        chat?.let {
+                            if(it.oppTitle== title){
+
+                            chatList.add(it)
+                        }
+                        }
+                    } catch (e: DatabaseException) {
+                        Log.e("HomeFragment", "Error converting Opportunity", e)
+                    }
+                }
+
+                Log.d("HomeFragment", "Number of opportunities: ${chatList.size}")
+
+                chatAdapter.updateData(chatList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("HomeFragment", "Database error: ${error.message}")
+            }
+        })
+
+
+}
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-
-
-/*     val sharedPreferences =
-         requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-     val useremail = sharedPreferences.getString("useremail", "")
-     Toast.makeText(requireContext(), "w$useremail", Toast.LENGTH_SHORT).show()
-
-     val title = arguments?.getString("titleForChat") ?: ""
-
-
-     // Now you have the title, you can use it as needed
-     Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()*/
 
 

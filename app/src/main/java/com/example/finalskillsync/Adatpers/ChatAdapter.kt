@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Firebase.Models.Chat
+import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.databinding.ChatListBinding
 
 class ChatAdapter (private val context: Context,
@@ -14,12 +15,18 @@ class ChatAdapter (private val context: Context,
         inner class  ViewHolder(private val binding:ChatListBinding ): RecyclerView.ViewHolder(binding.root){
             fun bind(current: Chat, context: Context) {
                 binding.apply {
-                    senderName.text= current.userId.toString()
+                    senderName.text= current.userName.toString()
+                    chatMe.text= current.chat.toString()
                 }
 
             }
 
         }
+    fun updateData(newList: List<Chat>) {
+        chatList.clear()
+        chatList.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
