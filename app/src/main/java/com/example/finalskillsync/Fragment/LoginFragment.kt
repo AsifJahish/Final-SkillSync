@@ -1,7 +1,9 @@
 package com.example.finalskillsync.Fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -99,14 +101,12 @@ class LoginFragment : Fragment() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // User login is successful
-                    Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                    val bundle = Bundle()
-                    bundle.putString("Email", email)
-                    val chatFragment = ChatFragment()
-                    chatFragment.arguments = bundle
-                    Toast.makeText(requireContext(), "$email", Toast.LENGTH_SHORT).show()
-                    travelToHome()
+
+                    val intent = Intent(requireContext(), HomeActivity::class.java)
+                    intent.putExtra("email", email)
+                    Toast.makeText(requireContext(), "susccesfull login", Toast.LENGTH_SHORT).show()
+
+                    startActivity(intent)
                 } else {
                     // If sign-in fails, display a message to the user.
                     Toast.makeText(requireContext(), "Authentication failed. ${task.exception?.message}", Toast.LENGTH_SHORT).show()

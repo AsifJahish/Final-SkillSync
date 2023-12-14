@@ -2,17 +2,22 @@ package com.example.finalskillsync.Adatpers
 
 import com.example.finalskillsync.R
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.Fragment.ChatFragment
 
 import com.example.finalskillsync.Fragment.OppDetailFragment
+import com.example.finalskillsync.HomeActivity
 import com.example.finalskillsync.databinding.OppListBinding
 
 
@@ -50,11 +55,21 @@ class OppAdapter(
                     toDetail()
                 }
                 chat.setOnClickListener{
+
+                    val fragment = ChatFragment()
+                    val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+
+                    // Pass the title to the ChatFragment using arguments
                     val bundle = Bundle()
-                    bundle.putString("Title", current.title)
-                    val detailFragment = OppDetailFragment()
-                    detailFragment.arguments = bundle
-                    toChat()
+                    bundle.putString("titleForChat", current.title)
+                    fragment.arguments = bundle
+
+                    // Start a fragment transaction to replace the current fragment with the ChatFragment
+                    fragmentManager.beginTransaction()
+                        .replace(R.id.homeFrame, fragment)
+                        .addToBackStack(null)
+                        .commit()
+
                 }
             }
         }
@@ -78,16 +93,14 @@ class OppAdapter(
 
         }
 
-    private fun toChat(){
-        val fragment = ChatFragment()
-        val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+ /*   private fun toChat(){
 
-        fragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, fragment)
-            .addToBackStack(null)
-            .commit()
 
-    }
+
+
+
+    }*/
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.finalskillsync.Fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -33,6 +34,7 @@ import java.io.IOException
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var rvAdapter: RvAdapter
     private lateinit var oppAdapter: OppAdapter
     private lateinit var oppRef: DatabaseReference
@@ -62,6 +64,7 @@ class HomeFragment : Fragment() {
         getOpp()
 
     }
+
 
 
 
@@ -138,6 +141,8 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

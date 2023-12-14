@@ -1,9 +1,11 @@
 package com.example.finalskillsync
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.finalskillsync.Fragment.HomeFragment
@@ -14,6 +16,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         // Display the HomeFragment by default
+        val useremail= intent.getStringExtra("email")
+        Toast.makeText(this, "$useremail", Toast.LENGTH_SHORT).show()
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("useremail", useremail)
+        editor.apply()
+
+
         showFragment(HomeFragment())
     }
 
@@ -41,11 +51,10 @@ class HomeActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
-
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.homeFrame, fragment)
-            // Remove the line below if you don't want to add the transaction to the back stack
+
             .addToBackStack(null)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
