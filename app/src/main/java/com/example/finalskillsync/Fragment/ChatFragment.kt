@@ -169,11 +169,7 @@ class ChatFragment : Fragment() {
                 Log.e("HomeFragment", "Database error: ${error.message}")
             }
         })
-
-
 }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
