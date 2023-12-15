@@ -8,10 +8,10 @@ import androidx.room.Query
 
 
 @Dao
-interface UserDao {
-@Insert(onConflict = OnConflictStrategy.IGNORE)
-suspend fun addOpp(opp:Opp )
-@Query("Select* From opp orderBy oppId")
-fun getOpp(): LiveData<List<Opp>>
+interface OppDao {
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun addOpp(opp:Opp )
+    @Query(" Select* From opp order By oppId ASC")
+    fun getOpp(): LiveData<List<Opp>>
 
 }

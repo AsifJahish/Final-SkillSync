@@ -15,6 +15,8 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.Fragment.ChatFragment
+import com.example.finalskillsync.Fragment.FavoriteFragment
+import com.example.finalskillsync.Fragment.HomeFragment
 
 import com.example.finalskillsync.Fragment.OppDetailFragment
 import com.example.finalskillsync.HomeActivity
@@ -24,7 +26,6 @@ import com.example.finalskillsync.databinding.OppListBinding
 class OppAdapter(
     private val context: Context,
     private var oppList: MutableList<Opportunity>,
-
 ) : RecyclerView.Adapter<OppAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +40,9 @@ class OppAdapter(
 
     override fun getItemCount(): Int {
         return oppList.size
+    }
+    interface OppAdapterListener {
+        fun onFavoriteClicked(title: String)
     }
 
     inner class ViewHolder(private val binding: OppListBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -71,8 +75,26 @@ class OppAdapter(
                         .commit()
 
                 }
+                favorite.setOnClickListener{
+                    val fragment = FavoriteFragment()
+                    val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+
+                    // Pass the title to the ChatFragment using arguments
+                    val bundle = Bundle()
+                    bundle.putString("titleForFavorite", current.title)
+                    fragment.arguments = bundle
+
+
+
+                    // Start a fragment transaction to replace the current fragment with the ChatFragment
+                    fragmentManager.beginTransaction()
+                        .replace(R.id.homeFrame, fragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
         }
+
     }
 
     fun updateData(newList: List<Opportunity>) {
@@ -93,13 +115,6 @@ class OppAdapter(
 
         }
 
- /*   private fun toChat(){
-
-
-
-
-
-    }*/
 
 
 
