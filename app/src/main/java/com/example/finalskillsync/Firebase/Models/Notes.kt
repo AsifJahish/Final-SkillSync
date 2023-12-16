@@ -6,7 +6,7 @@ data class Notes (
     var noteId: Long = Notes.generateRandomnoteId(),
     var title: String? = null,
     var detial: String? = null,
-    var userId: Long?= null,
+    var userEmail: String?= null,
 ) {
     companion object {
         private fun generateRandomnoteId(): Long {
