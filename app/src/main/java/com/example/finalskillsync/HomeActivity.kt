@@ -3,60 +3,62 @@ package com.example.finalskillsync
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.finalskillsync.Fragment.FavoriteFragment
 import com.example.finalskillsync.Fragment.HomeFragment
+import com.example.finalskillsync.Fragment.NoteFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+
 class HomeActivity : AppCompatActivity() {
+
+    private val homeFragment = HomeFragment()
+    private val favoriteFragment = FavoriteFragment()
+    private val noteFragment = NoteFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         // Display the HomeFragment by default
-        val useremail= intent.getStringExtra("email")
-       /* Toast.makeText(this, "$useremail", Toast.LENGTH_SHORT).show()*/
+        val useremail = intent.getStringExtra("email")
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("useremail", useremail)
         editor.apply()
 
+        val nav= findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        showFragment(HomeFragment())
-    }
+        nav.setOnItemSelectedListener{ item ->
+            when (item.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.favorite -> replaceFragment(FavoriteFragment())
+                R.id.profile -> replaceFragment(NoteFragment())
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.bottom_nav, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.home -> {
-                // Show HomeFragment when "Home" is selected
-                showFragment(HomeFragment())
-                return true
+                else -> {
+                    // Handle other cases
+                }
             }
-            // Uncomment the following sections for other menu items
-//            R.id.favorite -> {
-//                showFragment(FavoriteFragment())
-//                return true
-//            }
-//            R.id.profile -> {
-//                showFragment(ProfileFragment())
-//                return true
-//            }
-            else -> return super.onOptionsItemSelected(item)
+            true
         }
-    }
-    private fun showFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, fragment)
+        replaceFragment(HomeFragment())
 
-            .addToBackStack(null)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
+
     }
+
+    private fun replaceFragment(fragment: Fragment) {
+        Log.d("MyApp", "Replacing fragment with: ${fragment.javaClass.simpleName}")
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.homeFrame, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
 }

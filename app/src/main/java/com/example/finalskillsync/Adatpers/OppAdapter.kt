@@ -28,6 +28,8 @@ class OppAdapter(
     private var oppList: MutableList<Opportunity>,
 ) : RecyclerView.Adapter<OppAdapter.ViewHolder>() {
 
+    private var filteredList: MutableList<Opportunity> = oppList
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = OppListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -114,7 +116,10 @@ class OppAdapter(
                 .commit()
 
         }
-
+    fun filterList(filteredList: ArrayList<Opportunity>) {
+        this.filteredList = filteredList
+        notifyDataSetChanged()
+    }
 
 
 
