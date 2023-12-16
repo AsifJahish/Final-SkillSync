@@ -1,5 +1,6 @@
 package com.example.finalskillsync.Fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -51,43 +52,44 @@ class NoteFragment : Fragment() {
             fragment.show(requireActivity().supportFragmentManager, fragment.tag)
         }
 
+     /*   getOpp()*/
     }
     private fun getOpp() {
-        noteRef = FirebaseDatabase.getInstance().getReference("Memo")
-        noteAdapter = NoteAdapter(requireContext(), mutableListOf())
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val useremail = sharedPreferences.getString("useremail", "")
 
-        binding.noteRecycle.adapter = noteAdapter
-        // Set up the layout manager for vertical display
-        binding.noteRecycle.layoutManager = LinearLayoutManager(requireContext())
+        // Check if useremail is not empty before querying the database
+        if (!useremail.isNullOrEmpty()) {
+            noteRef = FirebaseDatabase.getInstance().getReference("Memo")
 
+            // Use orderByChild and equalTo to filter data based on useremail
+            noteRef.orderByChild("useremail").equalTo(useremail)
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val oppList = mutableListOf<Notes>()
 
-        noteRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val oppList = mutableListOf<Notes>()
-
-                for (oppSnapshot in snapshot.children) {
-                    try {
-                        val opportunity = oppSnapshot.getValue(Notes::class.java)
-                        opportunity?.let {
-                            oppList.add(it)
+                        for (oppSnapshot in snapshot.children) {
+                            try {
+                                val opportunity = oppSnapshot.getValue(Notes::class.java)
+                                opportunity?.let {
+                                    oppList.add(it)
+                                }
+                            } catch (e: DatabaseException) {
+                                Log.e("HomeFragment", "Error converting Opportunity", e)
+                            }
                         }
-                    } catch (e: DatabaseException) {
-                        Log.e("HomeFragment", "Error converting Opportunity", e)
+
+                        Log.d("HomeFragment", "Number of opportunities: ${oppList.size}")
+
+                        noteAdapter.updateData(oppList)
                     }
-                }
 
-                Log.d("HomeFragment", "Number of opportunities: ${oppList.size}")
-
-                noteAdapter.updateData(oppList)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("HomeFragment", "Database error: ${error.message}")
-            }
-        })
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e("HomeFragment", "Database error: ${error.message}")
+                    }
+                })
+        }
     }
-
-
 
 
 }

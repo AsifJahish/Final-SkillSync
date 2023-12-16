@@ -82,8 +82,8 @@ class FavoriteFragment : Fragment() {
         adapter = FavoriteAdapter(requireContext(), mutableListOf())
 
         // Set up RecyclerView
-        binding.recycle.adapter = adapter
-        binding.recycle.layoutManager = LinearLayoutManager(requireContext())
+        binding.favoriteRecycle.adapter = adapter
+        binding.favoriteRecycle.layoutManager = LinearLayoutManager(requireContext())
 
         // Observe data from ViewModel
         favoriteViewModel.allOpps.observe(viewLifecycleOwner, { opps ->
