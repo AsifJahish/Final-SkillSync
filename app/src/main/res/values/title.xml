@@ -5,7 +5,7 @@
     <!-- styles.xml -->
     <style name="title">
         <item name="android:fontFamily">@font/bold</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
 

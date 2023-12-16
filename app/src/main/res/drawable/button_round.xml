@@ -1,0 +1,13 @@
+<!-- res/drawable/button_round.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" /> <!-- Change this color to your preferred color -->
+            <size android:width="56dp" android:height="56dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_add"
+        android:gravity="center"
+        android:width="32dp"
+    android:height="32dp" />
+</layer-list>
