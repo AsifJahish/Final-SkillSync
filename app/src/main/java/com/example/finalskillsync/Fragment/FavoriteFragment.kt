@@ -67,7 +67,6 @@ class FavoriteFragment : Fragment() {
         val title = arguments?.getString("titleForFavorite") ?: ""
 
         // Now you have the title, you can use it as needed
-        Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()
 
         getAll()
 
@@ -88,7 +87,6 @@ class FavoriteFragment : Fragment() {
 
         // Observe data from ViewModel
         favoriteViewModel.allOpps.observe(viewLifecycleOwner, { opps ->
-            // Update RecyclerView when data changes
             adapter.updateData(opps)
         })
 
@@ -97,7 +95,7 @@ class FavoriteFragment : Fragment() {
         database = FirebaseDatabase.getInstance().reference
         val title = arguments?.getString("titleForFavorite") ?: ""
 
-        Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()
+  /*      Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()*/
         val oppRef = database.child("Opportunity")
         val usersQuery = oppRef.orderByChild("title").equalTo(title)
 
@@ -116,11 +114,11 @@ class FavoriteFragment : Fragment() {
                         // Check if any of the essential values are not empty
                         if (oppId.isNotEmpty() && titleOpp.isNotEmpty()
                         ) {
-                            Toast.makeText(
+                          /*  Toast.makeText(
                                 requireContext(),
                                 "${oppId}, $benefit",
                                 Toast.LENGTH_SHORT
-                            ).show()
+                            ).show()*/
 
                             // Call addtoFavorite() here, after ensuring that the data is available
                             addtoFavorite()

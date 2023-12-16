@@ -1,6 +1,5 @@
 package com.example.finalskillsync.Fragment
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -17,51 +16,45 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.R
-import com.example.finalskillsync.Room.Opp
-import com.example.finalskillsync.Room.OppDao
-import com.example.finalskillsync.Room.OppDatabase
-import com.example.finalskillsync.Room.OppRepository
-import com.example.finalskillsync.databinding.FragmentOppDetailBinding
+
+import com.example.finalskillsync.databinding.FragmentFavoriteDetialBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.launch
 
 
-class OppDetailFragment : Fragment() {
-    private lateinit var database: DatabaseReference
-    private var _binding: FragmentOppDetailBinding? = null
+
+class FavoriteDetialFragment : Fragment() {
+    private var _binding: FragmentFavoriteDetialBinding? = null
     private val binding get() = _binding!!
 
     companion object {
-        fun newInstance() =
-            OppDetailFragment.apply {
-                // You can still perform any initialization here if needed
-            }
+        fun newInstance() = FavoriteDetialFragment.apply{
+
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOppDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteDetialBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val title = arguments?.getString("Title") ?: ""
+        val title = arguments?.getString("titleForFD") ?: ""
 
         // Now you have the title, you can use it as needed
         Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()
 
-        retrieveOpp(title)
-
-    }
-
-    private fun retrieveOpp(oppTitle: String) {
+        retrieveOpportunity(title)
+        }
+    private fun retrieveOpportunity(oppTitle: String) {
         val databaseref = FirebaseDatabase.getInstance().reference.child("Opportunity")
         val databaseRef = databaseref.child(oppTitle)
         databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -123,12 +116,8 @@ class OppDetailFragment : Fragment() {
         })
 
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

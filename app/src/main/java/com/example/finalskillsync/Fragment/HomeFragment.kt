@@ -71,10 +71,6 @@ class HomeFragment : Fragment() {
         getQuotes()
         getOpp()
 
-
-
-
-
     }
 
 

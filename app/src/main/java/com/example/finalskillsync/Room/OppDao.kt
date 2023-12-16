@@ -14,4 +14,7 @@ interface OppDao {
     @Query(" Select* From opp order By oppId ASC")
     fun getOpp(): LiveData<List<Opp>>
 
+    @Query("SELECT * FROM opp")
+    fun getAllOpp(): LiveData<List<Opp>>
+
 }

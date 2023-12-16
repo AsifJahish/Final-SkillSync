@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Display the HomeFragment by default
         val useremail= intent.getStringExtra("email")
-        Toast.makeText(this, "$useremail", Toast.LENGTH_SHORT).show()
+       /* Toast.makeText(this, "$useremail", Toast.LENGTH_SHORT).show()*/
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("useremail", useremail)
