@@ -53,7 +53,7 @@ class OppAdapter(
 
             binding.apply {
                 titleOpp.text = current.title ?: "N/A"
-                imageOpp.setOnClickListener {
+                root.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString("Title", current.title)
                     val detailFragment = OppDetailFragment()

@@ -4,23 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:background="@drawable/rectangle_25">
-
-    <ImageView
-        android:id="@+id/imageOpp"
-        android:layout_width="310dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="3dp"
-        android:src="@drawable/rounded_corner"
-        app:layout_constraintBottom_toTopOf="@+id/titleOpp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleOpp"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="top"
@@ -29,7 +19,7 @@
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageOpp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.612" />
 
     <LinearLayout
@@ -37,11 +27,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@id/linear"
-        android:layout_marginBottom="0dp"
+
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageOpp">
+        app:layout_constraintTop_toBottomOf="@id/titleOpp">
 
         <ImageView
             android:id="@+id/favorite"
