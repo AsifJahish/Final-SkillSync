@@ -7,14 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalskillsync.Adatpers.NoteAdapter
-import com.example.finalskillsync.Adatpers.OppAdapter
+import com.example.finalskillsync.Adatpers.NoteAdapter.NoteAdapter
 import com.example.finalskillsync.Firebase.Models.Notes
-import com.example.finalskillsync.Firebase.Models.Opportunity
-import com.example.finalskillsync.R
-import com.example.finalskillsync.databinding.FragmentFavoriteDetialBinding
 import com.example.finalskillsync.databinding.FragmentNoteBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -52,18 +47,26 @@ class NoteFragment : Fragment() {
             fragment.show(requireActivity().supportFragmentManager, fragment.tag)
         }
 
-     /*   getOpp()*/
+        binding.noteRecycle.layoutManager = LinearLayoutManager(requireContext())
+
+        // Initialize noteAdapter and set it to the RecyclerView
+        noteAdapter = NoteAdapter(requireContext(), mutableListOf()) // Initialize with an empty list
+        binding.noteRecycle.adapter = noteAdapter
+
+        getOpp()
     }
     private fun getOpp() {
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val useremail = sharedPreferences.getString("useremail", "")
 
-        // Check if useremail is not empty before querying the database
+        // Set up the layout manager for vertical display
+        binding.noteRecycle.layoutManager = LinearLayoutManager(requireContext())
+
+
         if (!useremail.isNullOrEmpty()) {
             noteRef = FirebaseDatabase.getInstance().getReference("Memo")
 
-            // Use orderByChild and equalTo to filter data based on useremail
-            noteRef.orderByChild("useremail").equalTo(useremail)
+            noteRef.orderByChild("userEmail").equalTo(useremail)
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val oppList = mutableListOf<Notes>()

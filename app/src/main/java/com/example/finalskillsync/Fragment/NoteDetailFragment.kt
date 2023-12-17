@@ -5,56 +5,75 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.finalskillsync.Firebase.Models.Notes
 import com.example.finalskillsync.R
+import com.example.finalskillsync.databinding.FragmentFavoriteBinding
+import com.example.finalskillsync.databinding.FragmentNoteDetailBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NoteDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NoteDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentNoteDetailBinding? = null
+    private val binding get() = _binding!!
+
+    companion object {
+
+        fun newInstance() =
+            NoteDetailFragment().apply {
+
+            }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_note_detail, container, false)
+        _binding = FragmentNoteDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NoteDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NoteDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val title = arguments?.getString("titleForMemo") ?: ""
+
+        val databaseRef = FirebaseDatabase.getInstance().reference.child("Memo")
+
+        // Query the database based on the title
+        val query = databaseRef.orderByChild("title").equalTo(title)
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Get the first child (assuming there's only one match)
+                    val noteSnapshot = snapshot.children.first()
+
+                    // Convert the DataSnapshot to a Notes object
+                    val note = noteSnapshot.getValue(Notes::class.java)
+
+                    if (note != null) {
+                        // Update the TextView with the retrieved data
+                        binding.titleText.text = note.title
+                        binding.detialText.text = note.detial // Corrected here
+
+                    } else {
+                        // Handle the case where no data is found
+                        Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+                // You can log the error or display a message to the user
+                Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

@@ -11,15 +11,13 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalskillsync.Adatpers.FavoriteAdapter
-import com.example.finalskillsync.R
+import com.example.finalskillsync.Adatpers.FavoriteAdapter.FavoriteAdapter
 import com.example.finalskillsync.Room.FavoriteViewModel
 import com.example.finalskillsync.Room.FavoriteViewModelFactory
 import com.example.finalskillsync.Room.Opp
 import com.example.finalskillsync.Room.OppDatabase
 import com.example.finalskillsync.Room.OppRepository
 import com.example.finalskillsync.databinding.FragmentFavoriteBinding
-import com.example.finalskillsync.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference

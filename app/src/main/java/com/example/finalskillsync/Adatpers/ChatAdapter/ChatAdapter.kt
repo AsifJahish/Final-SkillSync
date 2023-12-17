@@ -1,11 +1,11 @@
-package com.example.finalskillsync.Adatpers
+package com.example.finalskillsync.Adatpers.ChatAdapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Firebase.Models.Chat
-import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.databinding.ChatListBinding
 
 class ChatAdapter (private val context: Context,
@@ -23,10 +23,12 @@ class ChatAdapter (private val context: Context,
 
         }
     fun updateData(newList: List<Chat>) {
+        val diffResult = DiffUtil.calculateDiff(ChatDiffUtil(chatList, newList))
         chatList.clear()
         chatList.addAll(newList)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)

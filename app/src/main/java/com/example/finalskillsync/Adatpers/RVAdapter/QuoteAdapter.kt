@@ -1,16 +1,24 @@
-package com.example.finalskillsync.Adatpers
+package com.example.finalskillsync.Adatpers.RVAdapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.API.Model.Quotes
 import com.example.finalskillsync.databinding.RvItemBinding
 
 
-class RvAdapter(private val quotesList: List<Quotes>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+class QuoteAdapter(private val context: Context, private var quotesList: List<Quotes>) : RecyclerView.Adapter<QuoteAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RvItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    }
+
+    fun updateData(newList: List<Quotes>) {
+        val diffResult = DiffUtil.calculateDiff(QuoteDiffUtil(quotesList, newList))
+        quotesList = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,7 +34,6 @@ class RvAdapter(private val quotesList: List<Quotes>) : RecyclerView.Adapter<RvA
         holder.binding.apply {
             textView.text = currentItem.text
             authortext.text= currentItem.author
-          /*  Picasso.get().load(currentItem.url).into(imageView)*/
         }
     }
 }

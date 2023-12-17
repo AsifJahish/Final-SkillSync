@@ -31,7 +31,7 @@
                 android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/titlefav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title"
@@ -45,7 +45,7 @@
 
 
                 <TextView
-                    android:id="@+id/level"
+                    android:id="@+id/levelfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/level"
@@ -60,7 +60,7 @@
 
 
                 <TextView
-                    android:id="@+id/benefit"
+                    android:id="@+id/benefitfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/benefit"
@@ -75,7 +75,7 @@
 
 
                 <TextView
-                    android:id="@+id/link"
+                    android:id="@+id/linkfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="web"
@@ -90,7 +90,7 @@
 
 
                 <TextView
-                    android:id="@+id/deadline"
+                    android:id="@+id/deadlinefav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/deadline"

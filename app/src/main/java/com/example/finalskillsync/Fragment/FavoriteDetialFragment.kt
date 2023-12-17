@@ -8,7 +8,6 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,14 +15,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.finalskillsync.Firebase.Models.Opportunity
 import com.example.finalskillsync.R
-
 import com.example.finalskillsync.databinding.FragmentFavoriteDetialBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.launch
+
 
 
 
@@ -49,15 +46,14 @@ class FavoriteDetialFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val title = arguments?.getString("titleForFD") ?: ""
 
-        // Now you have the title, you can use it as needed
-        Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()
 
-        retrieveOpportunity(title)
-        }
-    private fun retrieveOpportunity(oppTitle: String) {
+
+        retrieveOpp(title)
+    }
+    private fun retrieveOpp(oppTitle: String) {
         val databaseref = FirebaseDatabase.getInstance().reference.child("Opportunity")
-        val databaseRef = databaseref.child(oppTitle)
-        databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+
+        databaseref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (oppSnapshot in snapshot.children) {
@@ -65,12 +61,12 @@ class FavoriteDetialFragment : Fragment() {
                         if (opp != null) {
                             // Update the views with the retrieved scholarship details
                             /* ID.text = "ID:\n${scholarship.scholarshipId}"*/
-                            binding.title.text = opp.title
-                            binding.level.text = "Degree:\n${opp.level}"
+                            binding.titlefav.text = opp.title
+                            binding.levelfav.text = "Degree:\n${opp.level}"
 
                             val benefitsText = opp.benefit?.replace(",", "\n") ?: ""
                             val trim = benefitsText.trim('"') ?: ""
-                            binding.benefit.text = "detail :  \n$trim"
+                            binding.benefitfav.text = "detail :  \n$trim"
 
                             val linkText = opp.link
                             val linkSpannable = SpannableString("--> Click here")
@@ -92,14 +88,14 @@ class FavoriteDetialFragment : Fragment() {
                                 linkSpannable.length,
                                 0
                             )
-                            binding.link.text = linkSpannable
+                            binding.linkfav.text = linkSpannable
 
-                            binding.link.setOnClickListener {
+                            binding.linkfav.setOnClickListener {
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(linkText))
                                 startActivity(intent)
                             }
 
-                            binding.deadline.text = "Deadline:\n${opp.deadline}"
+                            binding.deadlinefav.text = "Deadline:\n${opp.deadline}"
                         }
                     }
                 }
@@ -116,6 +112,7 @@ class FavoriteDetialFragment : Fragment() {
         })
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

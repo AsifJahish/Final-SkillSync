@@ -1,27 +1,20 @@
 package com.example.finalskillsync.Fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.API.Model.Quotes
 import com.example.finalskillsync.API.Request.RetrofitInstance
-import com.example.finalskillsync.Adatpers.ChatAdapter
 import com.example.finalskillsync.Adatpers.OppAdapter
-import com.example.finalskillsync.Adatpers.RvAdapter
+import com.example.finalskillsync.Adatpers.RVAdapter.QuoteAdapter
 import com.example.finalskillsync.Firebase.Models.Opportunity
-import com.example.finalskillsync.R
-import com.example.finalskillsync.Room.Opp
-import com.example.finalskillsync.Room.OppDatabase
-import com.example.finalskillsync.Room.OppRepository
 import com.google.firebase.database.FirebaseDatabase
 import com.example.finalskillsync.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
@@ -43,7 +36,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var opportunityList: ArrayList<Opportunity>
 
-    private lateinit var rvAdapter: RvAdapter
+    private lateinit var quoteAdapter: QuoteAdapter
     private lateinit var oppAdapter: OppAdapter
     private lateinit var oppRef: DatabaseReference
 
@@ -169,9 +162,9 @@ class HomeFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         val quotes: List<Quotes> = response.body()?: emptyList()
-                        rvAdapter = RvAdapter(quotes)
+                        quoteAdapter = QuoteAdapter(quotes)
                         binding.rcycleView.apply {
-                            adapter = rvAdapter
+                            adapter = quoteAdapter
                             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                         }
                     } else {

@@ -9,11 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalskillsync.Adatpers.ChatAdapter
-import com.example.finalskillsync.Adatpers.OppAdapter
+import com.example.finalskillsync.Adatpers.ChatAdapter.ChatAdapter
 import com.example.finalskillsync.Firebase.Models.Chat
-import com.example.finalskillsync.Firebase.Models.Opportunity
-import com.example.finalskillsync.Firebase.Models.Users
 import com.example.finalskillsync.databinding.FragmentChatBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -31,7 +28,6 @@ class ChatFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var userIdd:String
     private lateinit var userName:String
-
 
 
     companion object {
@@ -58,6 +54,7 @@ class ChatFragment : Fragment() {
         getChat()
         getIDName()
     }
+
 
     private fun getIDName() {
 
