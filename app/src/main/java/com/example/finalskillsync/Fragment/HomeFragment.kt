@@ -162,7 +162,7 @@ class HomeFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         val quotes: List<Quotes> = response.body()?: emptyList()
-                        quoteAdapter = QuoteAdapter(quotes)
+                        quoteAdapter = QuoteAdapter(requireContext(),quotes)
                         binding.rcycleView.apply {
                             adapter = quoteAdapter
                             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
