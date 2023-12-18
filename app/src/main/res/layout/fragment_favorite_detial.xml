@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.FavoriteDetialFragment">
+    tools:context=".View.Fragment.FavoriteDetialFragment">
     <ScrollView
         android:id="@+id/scrool"
         android:layout_width="match_parent"

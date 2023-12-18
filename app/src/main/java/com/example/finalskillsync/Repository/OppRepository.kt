@@ -2,7 +2,7 @@ package com.example.finalskillsync.Repository
 
 import androidx.lifecycle.LiveData
 import com.example.finalskillsync.Model.Opp
-import com.example.finalskillsync.Room.OppDao
+import com.example.finalskillsync.Dao.OppDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
