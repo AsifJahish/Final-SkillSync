@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
@@ -33,6 +34,9 @@ private lateinit var auth: FirebaseAuth
         super.onViewCreated(view, savedInstanceState)
         dbref = FirebaseDatabase.getInstance().reference.child("Users")
         auth = FirebaseAuth.getInstance()
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
 
         logoPicture()
 

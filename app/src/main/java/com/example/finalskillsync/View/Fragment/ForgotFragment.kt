@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.finalskillsync.databinding.FragmentForgotBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +24,9 @@ class ForgotFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
         binding.resetButton.visibility
         binding.resetButton.setOnClickListener {
             val email = binding.emailEdit.text.toString().trim()

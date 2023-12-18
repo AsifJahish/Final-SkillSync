@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+
     <View
         android:id="@+id/rectangle_5"
         android:layout_width="match_parent"
@@ -42,25 +43,26 @@
         android:background="@drawable/rectangle_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-
     <View
         android:id="@+id/pexels_duop"
         android:layout_width="43dp"
+        android:layout_marginTop="20dp"
         android:layout_height="39dp"
-        android:layout_marginTop="10dp"
+
         android:background="@drawable/person"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@id/email"
         app:layout_constraintEnd_toEndOf="@id/rectangle_5"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="@id/rectangle_5"
         app:layout_constraintTop_toTopOf="@id/rectangle_5"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.2" />
+
 
     <EditText
         android:id="@+id/email"
@@ -68,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="44dp"
         android:foregroundGravity="center"
         android:gravity="top"
         android:hint="@string/email"
@@ -77,13 +80,10 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
-
+        app:layout_constraintTop_toBottomOf="@+id/pexels_duop" />
 
     <EditText
         android:id="@+id/password"
@@ -102,10 +102,10 @@
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.12" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
@@ -121,10 +121,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintVertical_bias="0.359" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/forgotPass"
@@ -141,6 +141,7 @@
         android:textAppearance="@style/forgot_pass"
         app:layout_constraintBottom_toTopOf="@+id/signUP"
         app:layout_constraintEnd_toEndOf="@id/rectangle_5"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="@id/rectangle_5"
         app:layout_constraintTop_toBottomOf="@id/buttonLogin"
         app:layout_constraintVertical_bias="0.45" />
@@ -159,6 +160,7 @@
         android:textAppearance="@style/forgot_pass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/rectangle_5"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="@id/rectangle_5"
         app:layout_constraintTop_toBottomOf="@id/forgotPass"
         app:layout_constraintVertical_bias="0.1" />
