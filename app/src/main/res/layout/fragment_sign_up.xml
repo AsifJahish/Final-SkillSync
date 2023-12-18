@@ -50,6 +50,7 @@
         app:layout_constraintTop_toTopOf="@id/rectangle_5"
         app:layout_constraintVertical_bias="0.125" />
 
+
     <EditText
         android:id="@+id/FullName"
         android:layout_width="260dp"
@@ -58,17 +59,19 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:textColor="@color/black"
+        android:paddingLeft="5dp"
         android:hint="@string/FullName"
         android:inputType="text"
         android:textAppearance="@style/email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintVertical_bias="0.544" />
 
 
     <EditText
@@ -79,18 +82,19 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:textColor="@color/black"
-        android:hint="@string/password"
+        android:textColorHint="@color/black"
+        android:paddingLeft="5dp"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/email"
+        android:textColor="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
-
+        app:layout_constraintVertical_bias="0.63" />
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -99,7 +103,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
+        android:textColorHint="@color/black"
         android:gravity="top"
+        android:paddingLeft="5dp"
         android:hint="@string/PhoneNumber"
         android:inputType="number"
         android:textAppearance="@style/email"
@@ -110,7 +116,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766" />
+        app:layout_constraintVertical_bias="0.721" />
 
     <EditText
         android:id="@+id/password"
@@ -118,8 +124,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:textColorHint="@color/black"
         android:foregroundGravity="center"
         android:gravity="top"
+        android:paddingLeft="5dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textAppearance="@style/email"
@@ -130,7 +138,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="0.809" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSignUp"
@@ -147,10 +155,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.901" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

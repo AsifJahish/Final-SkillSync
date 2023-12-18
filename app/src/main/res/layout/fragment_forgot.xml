@@ -1,89 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_background"
     android:padding="16dp">
+
+
+    <View
+        android:id="@+id/rectangle_5"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:background="@drawable/rectangle_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Forgot Password?"
-        android:textSize="24sp"
         android:textColor="#333333"
-        android:layout_gravity="center"/>
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.089" />
 
     <RadioGroup
         android:id="@+id/chooseOptionRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335">
 
         <RadioButton
             android:id="@+id/emailRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="Reset via Email"
-            android:textSize="18sp"
-            android:checked="true"/>
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/phoneRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset via Phone"
-            android:textSize="18sp"/>
+            android:textColor="@color/black"
+            android:textSize="18sp" />
     </RadioGroup>
 
     <EditText
         android:id="@+id/emailEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:paddingLeft="5dp"
         android:hint="Enter your email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="16dp"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656" />
 
-    <EditText
-        android:id="@+id/phoneEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your phone number"
-        android:inputType="phone"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"/>
-
-    <!-- Additional EditText fields based on user's choice -->
-    <EditText
-        android:id="@+id/confirmCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="confirmation Code"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"/>
-
-    <EditText
-        android:id="@+id/newPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="New Password"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"/>
-
-    <EditText
-        android:id="@+id/confirmNewPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="confrim new Password"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"/>
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/resetButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_7"
         android:text="Reset Password"
-        android:layout_marginTop="24dp"/>
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEdit"
+        app:layout_constraintVertical_bias="0.243" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

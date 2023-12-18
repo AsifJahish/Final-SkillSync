@@ -43,8 +43,9 @@ class LoginFragment : Fragment() {
 
         }
         binding.forgotPass.setOnClickListener {
-            travelToForgot()
-
+            // Inside your activity or fragment where you want to show the bottom sheet
+            val fragment = ForgotFragment.newInstance()
+            fragment.show(requireFragmentManager(), fragment.tag)
         }
 
 
@@ -69,19 +70,9 @@ class LoginFragment : Fragment() {
         transaction.addToBackStack(null) // Optional: add the transaction to the back stack
         transaction.commit()
     }
-    private fun travelToHome(){
-        val intent = Intent(activity, HomeActivity::class.java)
-        startActivity(intent)
 
-    }
 
-    private fun travelToForgot(){
-        val fragment= ForgotFragment()
-        val transaction: FragmentTransaction= requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.frameContainer, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+
 
 
     private fun getUsers() {
@@ -113,18 +104,5 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), "Authentication failed. ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
-/*
-    private fun logoPicture(){
-        context?.let {
-            val url= "https://syncskills.net/wp-content/uploads/2022/03/syncskills-logo-twitter-card.png"
-            val imagePath= binding.logoImageView
-
-            Glide.with(this)
-                .load(url)
-                .into(imagePath)
-        };
-    }
-*/
 
 }

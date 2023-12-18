@@ -1,19 +1,17 @@
 package com.example.finalskillsync.View.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.finalskillsync.databinding.FragmentForgotBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-
-class ForgotFragment : Fragment() {
+class ForgotFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentForgotBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +23,7 @@ class ForgotFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.resetButton.visibility
         binding.resetButton.setOnClickListener {
             val email = binding.emailEdit.text.toString().trim()
 
@@ -50,8 +48,6 @@ class ForgotFragment : Fragment() {
                     }
             }
         }
-
-
     }
 
     companion object {
@@ -60,8 +56,4 @@ class ForgotFragment : Fragment() {
                 // You can still perform any initialization here if needed
             }
     }
-
-//    private fun verificationemail() {
-//
-//
 }

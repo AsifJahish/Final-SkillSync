@@ -59,6 +59,8 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
+        android:textColorHint="@color/black"
+        android:paddingLeft="5dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/email"
@@ -80,6 +82,8 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
+        android:paddingLeft="5dp"
+        android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -95,7 +99,6 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         android:layout_width="140dp"
-
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
