@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Model.Chat
 import com.example.finalskillsync.View.Adatpers.DiffUtil.ChatDiffUtil
 import com.example.finalskillsync.databinding.ChatListBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class ChatAdapter (private val context: Context,
@@ -19,6 +22,13 @@ class ChatAdapter (private val context: Context,
             binding.apply {
                 senderName.text= current.userName.toString()
                 chatMe.text= current.chat.toString()
+                val timeInMillis = current.timestamp
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = timeInMillis
+                val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+                val formattedTime = dateFormat.format(calendar.time)
+                time.text = formattedTime
+
             }
 
         }

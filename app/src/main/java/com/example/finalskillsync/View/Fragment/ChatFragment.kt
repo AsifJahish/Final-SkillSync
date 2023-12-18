@@ -48,8 +48,8 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sendchat.setOnClickListener {
-
             sendMessage()
+            binding.writeChat.text.clear()
         }
 
         val title = arguments?.getString("titleForChat") ?: ""
@@ -73,8 +73,7 @@ class ChatFragment : Fragment() {
                     for (userSnapshot in dataSnapshot.children) {
                         userIdd = (userSnapshot.child("userId").value as? Long).toString()
                         userName = (userSnapshot.child("name").value as? String).toString()
-                        Toast.makeText(requireContext(), "$userIdd, $userName", Toast.LENGTH_SHORT)
-                            .show()
+
                     }
                 } else {
                     // Handle the case when the snapshot doesn't exist
@@ -116,11 +115,6 @@ class ChatFragment : Fragment() {
             chatId?.let {
                 databaseRef.child(it.toString()).setValue(comment)
                     .addOnSuccessListener {
-                        Toast.makeText(
-                            requireContext(),
-                            "Comment saved successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
                         getChat()
                     }.addOnFailureListener { exception ->
                         Toast.makeText(

@@ -1,47 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:background="#FF4B5057"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#FF4B5057">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
-        android:layout_width="340dp"
+    <TextView
+        android:id="@+id/chatMe"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/transparent"
-        android:foregroundGravity="top"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="1dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/corner_shape_chat"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="Message"
+        android:textAppearance="@style/title"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722">
-
-        <TextView
-            android:id="@+id/chatMe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Message"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:textAppearance="@style/title"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
-
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toStartOf="@+id/time"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/senderName"
+        app:layout_constraintTop_toBottomOf="@+id/senderName"
+        app:layout_constraintVertical_bias="0.5" />
 
 
     <TextView
@@ -55,7 +41,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/card"
+        app:layout_constraintBottom_toTopOf="@id/chatMe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,10 +59,11 @@
         android:textAppearance="@style/title"
         android:textColor="@color/white"
         android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/chatMe"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/card"
-        app:layout_constraintTop_toBottomOf="@id/card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@id/chatMe"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

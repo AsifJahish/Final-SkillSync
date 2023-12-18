@@ -83,16 +83,11 @@ class OppAdapter(
     fun updateData(newList: List<Opportunity>) {
         // Calculate the diff result
         val diffResult = DiffUtil.calculateDiff(OppDiffUtil(oppList, newList))
-
-        // Clear the old list and add the new data
         oppList.clear()
         oppList.addAll(newList)
 
-        // Dispatch the diff result to the adapter
         diffResult.dispatchUpdatesTo(this)
 
-        // Return filteredList if needed
-        // return filteredList
     }
 
     private fun toDetail() {

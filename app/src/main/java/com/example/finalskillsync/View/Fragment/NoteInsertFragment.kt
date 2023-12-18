@@ -35,6 +35,10 @@ class NoteInsertFragment : BottomSheetDialogFragment() {
         binding.addButton.setOnClickListener {
 
             sendMemo()
+
+            binding.firstEditText.text.clear()
+            binding.secondEditText.text.clear()
+
         }
 
 

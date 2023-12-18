@@ -40,8 +40,10 @@ class LoginFragment : Fragment() {
             fragmentTransaction()
         }
         binding.buttonLogin.setOnClickListener {
-            getUsers()
 
+            getUsers()
+            binding.email.text.clear()
+            binding.password.text.clear()
         }
         binding.forgotPass.setOnClickListener {
             // Inside your activity or fragment where you want to show the bottom sheet
