@@ -34,9 +34,8 @@ private lateinit var auth: FirebaseAuth
         dbref = FirebaseDatabase.getInstance().reference.child("Users")
         auth = FirebaseAuth.getInstance()
 
-        logoPicture()
 
-        binding.signUpButton.setOnClickListener {
+        binding.buttonSignUp.setOnClickListener {
             saveUser()
             loginTranscation()
             firebaseauthSave()
@@ -50,10 +49,10 @@ private lateinit var auth: FirebaseAuth
     }
 
     private fun saveUser() {
-        val name = binding.nameEditText.text.toString()
-        val email = binding.emailEditText.text.toString()
-        val password = binding.passwordEditText.text.toString()
-        val phoneNumber = binding.phoneNumberEditText.text.toString()
+        val name = binding.FullName.text.toString()
+        val email = binding.email.text.toString()
+        val password = binding.password.text.toString()
+        val phoneNumber = binding.phoneNumber.text.toString()
 
         if (name.isEmpty() && email.isEmpty() && password.isEmpty()) {
             Toast.makeText(context, "empty", Toast.LENGTH_SHORT).show()
@@ -72,8 +71,8 @@ private lateinit var auth: FirebaseAuth
     }
 
     private fun firebaseauthSave(){
-        val email = binding.emailEditText.text.toString()
-        val password = binding.passwordEditText.text.toString()
+        val email = binding.email.text.toString()
+        val password = binding.password.text.toString()
         if ( email.isEmpty() || password.isEmpty()) {
             Toast.makeText(context, "All fields are required", Toast.LENGTH_SHORT).show()
             return
@@ -113,17 +112,6 @@ private lateinit var auth: FirebaseAuth
             .commit()
     }
 
-    private fun logoPicture(){
-        context?.let {
 
-            val url= "https://syncskills.net/wp-content/uploads/2022/03/syncskills-logo-twitter-card.png"
-
-            val imagePath= binding.logoImageView
-
-            Glide.with(this)
-                .load(url)
-                .into(imagePath)
-        };
-    }
 
 }

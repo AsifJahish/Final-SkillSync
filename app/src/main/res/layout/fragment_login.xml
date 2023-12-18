@@ -36,9 +36,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
-
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
     <View
         android:id="@+id/pexels_duop"
@@ -57,7 +54,7 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="260dp"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
@@ -65,6 +62,8 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/email"
+        android:textSize="14dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -76,17 +75,18 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="260dp"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
+        android:textColor="@color/black"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textAppearance="@style/email"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -148,10 +148,7 @@
         app:layout_constraintStart_toStartOf="@id/rectangle_5"
         app:layout_constraintTop_toBottomOf="@id/forgotPass"
         app:layout_constraintVertical_bias="0.1" />
-    <!--
-    Font family: Pridi
-    Line height: 22sp
-    -->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

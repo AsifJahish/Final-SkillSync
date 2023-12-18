@@ -24,13 +24,19 @@
     <!-- strings.xml -->
     <string name="email">Email</string>
 
+    <string name="FullName">FullName</string>
 
+
+    <string name="PhoneNumber">PhoneNumber</string>
     <!-- strings.xml -->
     <string name="opportunity">chatRoom</string>
 
 
     <!-- strings.xml -->
     <string name="login1">Login</string>
+    <!-- strings.xml -->
+    <string name="SignUp">SignUp</string>
+
 
     <string name="forgot_pass">Forgot Password? </string>
     <string name="full_name">Full Name</string>
