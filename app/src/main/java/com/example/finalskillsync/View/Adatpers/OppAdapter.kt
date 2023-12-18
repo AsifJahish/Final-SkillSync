@@ -91,8 +91,8 @@ class OppAdapter(
         // Dispatch the diff result to the adapter
         diffResult.dispatchUpdatesTo(this)
 
-        // Not sure why filteredList is returned here, so I commented it out
-        // filteredList
+        // Return filteredList if needed
+        // return filteredList
     }
 
     private fun toDetail() {
@@ -105,10 +105,12 @@ class OppAdapter(
             .commit()
     }
 
-    fun filterList(filteredList: ArrayList<Opportunity>) {
-        this.filteredList = filteredList
+    fun filterList(filteredList: List<Opportunity>) {
+        oppList.clear()
+        oppList.addAll(filteredList)
         notifyDataSetChanged()
     }
+
 }
 
 

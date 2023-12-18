@@ -35,19 +35,17 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.singUpButton.setOnClickListener {
+        binding.signUP.setOnClickListener {
             fragmentTransaction()
         }
-        binding.loginButton.setOnClickListener {
+        binding.buttonLogin.setOnClickListener {
             getUsers()
 
         }
-        binding.forgotPasswordTextView.setOnClickListener {
+        binding.forgotPass.setOnClickListener {
             travelToForgot()
 
         }
-
-        logoPicture()
 
 
     }
@@ -87,8 +85,8 @@ class LoginFragment : Fragment() {
 
 
     private fun getUsers() {
-        val email = binding.emailEditText.text.toString()
-        val password = binding.passwordEditTextL.text.toString()
+        val email = binding.email.text.toString()
+        val password = binding.password.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(requireContext(), "Email and password are required", Toast.LENGTH_SHORT).show()
@@ -116,6 +114,7 @@ class LoginFragment : Fragment() {
             }
     }
 
+/*
     private fun logoPicture(){
         context?.let {
             val url= "https://syncskills.net/wp-content/uploads/2022/03/syncskills-logo-twitter-card.png"
@@ -126,12 +125,6 @@ class LoginFragment : Fragment() {
                 .into(imagePath)
         };
     }
+*/
 
 }
-
-/*
-private fun activity2(){
-    val intent = Intent(activity, MainActivity2::class.java)
-    startActivity(intent)
-
-}*/

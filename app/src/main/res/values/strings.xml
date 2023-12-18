@@ -16,5 +16,22 @@
     <string name="link">link </string>
     <string name="deadline">deadline </string>
 
+    <string name="wsign_up">sign Up?</string>
+
+    <!-- strings.xml -->
+    <string name="password">Password </string>
+
+    <!-- strings.xml -->
+    <string name="email">Email</string>
+
+
+    <!-- strings.xml -->
+    <string name="opportunity">chatRoom</string>
+
+
+    <!-- strings.xml -->
+    <string name="login1">Login</string>
+
+    <string name="forgot_pass">Forgot Password? </string>
     <string name="full_name">Full Name</string>
 </resources>

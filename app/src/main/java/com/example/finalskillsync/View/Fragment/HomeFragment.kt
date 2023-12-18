@@ -39,9 +39,8 @@ class HomeFragment : Fragment() {
     private lateinit var quoteAdapter: QuoteAdapter
     private lateinit var oppAdapter: OppAdapter
     private lateinit var oppRef: DatabaseReference
-    private var currentPage = 1
-    private val itemsPerPage = 7
-    private var isLoading = false
+    private lateinit var originalOpportunityList: ArrayList<Opportunity>
+
 
 
 
@@ -63,10 +62,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.search.clearFocus()
 
         opportunityList = ArrayList()
+        originalOpportunityList = ArrayList()
+
         oppAdapter = OppAdapter(requireContext(), opportunityList)
         binding.oppRecycleView.adapter = oppAdapter
 
@@ -77,10 +77,8 @@ class HomeFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 if (newText.isEmpty()) {
-                    // If the text is empty, refresh the list to show the original, unfiltered list
                     refreshList()
                 } else {
-                    // If there is a query, perform the search as usual
                     filterOpportunities(newText)
                 }
                 return true
@@ -97,7 +95,7 @@ class HomeFragment : Fragment() {
     private fun filterOpportunities(query: String) {
         val filteredList = ArrayList<Opportunity>()
 
-        for (opportunity in opportunityList) {
+        for (opportunity in originalOpportunityList) {
             if (oppContainsQuery(opportunity, query)) {
                 filteredList.add(opportunity)
             }
@@ -105,6 +103,7 @@ class HomeFragment : Fragment() {
 
         oppAdapter.filterList(filteredList)
     }
+
 
     private fun oppContainsQuery(opportunity: Opportunity, query: String): Boolean {
         val lowercaseQuery = query.toLowerCase()
@@ -128,7 +127,6 @@ class HomeFragment : Fragment() {
         // Set up the layout manager for vertical display
         binding.oppRecycleView.layoutManager = LinearLayoutManager(requireContext())
 
-
         oppRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val oppList = mutableListOf<Opportunity>()
@@ -144,7 +142,8 @@ class HomeFragment : Fragment() {
                     }
                 }
 
-                Log.d("HomeFragment", "Number of opportunities: ${oppList.size}")
+                originalOpportunityList.clear()
+                originalOpportunityList.addAll(oppList)
 
                 oppAdapter.updateData(oppList)
             }
@@ -154,6 +153,8 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+
 
 
 
