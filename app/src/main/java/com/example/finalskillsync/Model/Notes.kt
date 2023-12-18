@@ -1,9 +1,9 @@
-package com.example.finalskillsync.Firebase.Models
+package com.example.finalskillsync.Model
 
 import kotlin.random.Random
 
 data class Notes (
-    var noteId: Long = Notes.generateRandomnoteId(),
+    var noteId: Long = generateRandomnoteId(),
     var title: String? = null,
     var detial: String? = null,
     var userEmail: String?= null,

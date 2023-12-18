@@ -1,4 +1,4 @@
-package com.example.finalskillsync.Room
+package com.example.finalskillsync.Model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

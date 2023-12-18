@@ -10,11 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalskillsync.API.Model.Quotes
-import com.example.finalskillsync.API.Request.RetrofitInstance
+import com.example.finalskillsync.Model.Quotes
+import com.example.finalskillsync.Network.RetrofitInstance
 import com.example.finalskillsync.Adatpers.OppAdapter
 import com.example.finalskillsync.Adatpers.RVAdapter.QuoteAdapter
-import com.example.finalskillsync.Firebase.Models.Opportunity
+import com.example.finalskillsync.Model.Opportunity
 import com.google.firebase.database.FirebaseDatabase
 import com.example.finalskillsync.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
@@ -39,7 +39,9 @@ class HomeFragment : Fragment() {
     private lateinit var quoteAdapter: QuoteAdapter
     private lateinit var oppAdapter: OppAdapter
     private lateinit var oppRef: DatabaseReference
-
+    private var currentPage = 1
+    private val itemsPerPage = 7
+    private var isLoading = false
 
 
 
@@ -68,7 +70,6 @@ class HomeFragment : Fragment() {
         oppAdapter = OppAdapter(requireContext(), opportunityList)
         binding.oppRecycleView.adapter = oppAdapter
 
-
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
@@ -80,20 +81,25 @@ class HomeFragment : Fragment() {
                     refreshList()
                 } else {
                     // If there is a query, perform the search as usual
-                    filterScholarships(newText)
+                    filterOpportunities(newText)
                 }
                 return true
             }
         })
+
+
         getQuotes()
         getOpp()
 
-    }    private fun filterScholarships(query: String) {
+    }
+
+
+    private fun filterOpportunities(query: String) {
         val filteredList = ArrayList<Opportunity>()
 
-        for (scholarship in opportunityList) {
-            if (oppContainsQuery(scholarship, query)) {
-                filteredList.add(scholarship)
+        for (opportunity in opportunityList) {
+            if (oppContainsQuery(opportunity, query)) {
+                filteredList.add(opportunity)
             }
         }
 
@@ -103,7 +109,6 @@ class HomeFragment : Fragment() {
     private fun oppContainsQuery(opportunity: Opportunity, query: String): Boolean {
         val lowercaseQuery = query.toLowerCase()
 
-        // Check if any attribute of the Scholarships object contains the lowercase search query
         return opportunity.title?.toLowerCase()?.contains(lowercaseQuery) == true ||
                 opportunity.level?.toLowerCase()?.contains(lowercaseQuery) == true ||
                 opportunity.link?.toLowerCase()?.contains(lowercaseQuery) == true ||
@@ -111,9 +116,7 @@ class HomeFragment : Fragment() {
                 opportunity.deadline?.toLowerCase()?.contains(lowercaseQuery) == true
     }
 
-
     private fun refreshList() {
-        // Call this method when you want to show the original, unfiltered list
         oppAdapter.filterList(opportunityList)
     }
 

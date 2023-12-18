@@ -1,7 +1,7 @@
 package com.example.finalskillsync.Adatpers.ChatAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.finalskillsync.Firebase.Models.Chat
+import com.example.finalskillsync.Model.Chat
 
 class ChatDiffUtil(private val oldList: List<Chat>, private val newList: List<Chat>) : DiffUtil.Callback() {
 

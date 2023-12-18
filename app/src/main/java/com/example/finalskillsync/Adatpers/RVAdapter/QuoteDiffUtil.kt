@@ -1,7 +1,7 @@
 package com.example.finalskillsync.Adatpers.RVAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.finalskillsync.API.Model.Quotes
+import com.example.finalskillsync.Model.Quotes
 
 class QuoteDiffUtil(private val oldList: List<Quotes>, private val newList: List<Quotes>) : DiffUtil.Callback() {
 

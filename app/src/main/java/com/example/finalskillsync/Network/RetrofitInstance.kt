@@ -1,6 +1,7 @@
-package com.example.finalskillsync.API.Request
+package com.example.finalskillsync.Network
 
 
+import com.example.finalskillsync.Util.Util
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {

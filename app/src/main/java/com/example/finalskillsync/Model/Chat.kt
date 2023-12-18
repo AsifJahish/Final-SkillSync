@@ -1,4 +1,4 @@
-package com.example.finalskillsync.Firebase.Models
+package com.example.finalskillsync.Model
 
 import java.util.Calendar
 import kotlin.random.Random
@@ -12,7 +12,7 @@ data class Chat(
     var userName: String? = null,
     var oppTitle:String?= null,
 
-)
+    )
 {
     companion object {
         fun generateRandomShareId(): Long {

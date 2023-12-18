@@ -1,4 +1,4 @@
-package com.example.finalskillsync.API.Model
+package com.example.finalskillsync.Model
 
 data class AllQuotes (
     val quotes: List<Quotes>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Fragment.FavoriteDetialFragment
 import com.example.finalskillsync.R
-import com.example.finalskillsync.Room.Opp
+import com.example.finalskillsync.Model.Opp
 import com.example.finalskillsync.databinding.FavoriteListBinding
 
 class FavoriteAdapter(private val context: Context,

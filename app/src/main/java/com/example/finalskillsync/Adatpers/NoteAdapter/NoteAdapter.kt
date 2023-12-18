@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalskillsync.Firebase.Models.Notes
+import com.example.finalskillsync.Model.Notes
 import com.example.finalskillsync.Fragment.NoteDetailFragment
 import com.example.finalskillsync.R
 import com.example.finalskillsync.databinding.NoteListBinding

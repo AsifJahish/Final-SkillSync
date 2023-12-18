@@ -1,4 +1,4 @@
-package com.example.finalskillsync.API.Model
+package com.example.finalskillsync.Model
 
 import com.google.gson.annotations.SerializedName
 

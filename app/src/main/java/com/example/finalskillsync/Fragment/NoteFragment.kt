@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalskillsync.Adatpers.NoteAdapter.NoteAdapter
-import com.example.finalskillsync.Firebase.Models.Notes
+import com.example.finalskillsync.Model.Notes
 import com.example.finalskillsync.databinding.FragmentNoteBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

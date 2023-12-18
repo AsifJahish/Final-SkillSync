@@ -1,7 +1,7 @@
 package com.example.finalskillsync.Adatpers.NoteAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.finalskillsync.Firebase.Models.Notes
+import com.example.finalskillsync.Model.Notes
 
 class NoteDiffUtil(private val oldList: List<Notes>, private val newList: List<Notes>) : DiffUtil.Callback() {
 

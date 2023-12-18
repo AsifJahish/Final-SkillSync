@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalskillsync.Adatpers.ChatAdapter.ChatAdapter
-import com.example.finalskillsync.Firebase.Models.Chat
+import com.example.finalskillsync.Model.Chat
 import com.example.finalskillsync.databinding.FragmentChatBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

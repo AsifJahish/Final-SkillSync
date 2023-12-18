@@ -41,7 +41,8 @@
         android:id="@+id/rcycleView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="horizontal"
+
+        android:scrollbars="vertical"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@id/linear"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +55,7 @@
         android:id="@+id/oppRecycleView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="horizontal"
         android:layout_marginTop="2dp"
         android:foregroundGravity="left"
         app:layout_constraintTop_toBottomOf="@+id/rcycleView"

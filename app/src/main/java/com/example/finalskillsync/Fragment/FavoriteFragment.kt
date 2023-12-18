@@ -12,11 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalskillsync.Adatpers.FavoriteAdapter.FavoriteAdapter
-import com.example.finalskillsync.Room.FavoriteViewModel
-import com.example.finalskillsync.Room.FavoriteViewModelFactory
-import com.example.finalskillsync.Room.Opp
+import com.example.finalskillsync.ViewModel.FavoriteViewModel
+import com.example.finalskillsync.ViewModel.FavoriteViewModelFactory
+import com.example.finalskillsync.Model.Opp
 import com.example.finalskillsync.Room.OppDatabase
-import com.example.finalskillsync.Room.OppRepository
+import com.example.finalskillsync.Repository.OppRepository
 import com.example.finalskillsync.databinding.FragmentFavoriteBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -74,7 +74,8 @@ class FavoriteFragment : Fragment() {
         oppRepository = OppRepository(oppDao)
 
 
-        favoriteViewModel = ViewModelProvider(this, FavoriteViewModelFactory(oppRepository)).get(FavoriteViewModel::class.java)
+        favoriteViewModel = ViewModelProvider(this, FavoriteViewModelFactory(oppRepository)).get(
+            FavoriteViewModel::class.java)
 
         // Initialize RecyclerView Adapter
         adapter = FavoriteAdapter(requireContext(), mutableListOf())

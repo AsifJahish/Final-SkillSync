@@ -1,6 +1,5 @@
 package com.example.finalskillsync.Fragment
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -9,18 +8,13 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.finalskillsync.Firebase.Models.Opportunity
+import com.example.finalskillsync.Model.Opportunity
 import com.example.finalskillsync.R
-import com.example.finalskillsync.Room.Opp
-import com.example.finalskillsync.Room.OppDao
-import com.example.finalskillsync.Room.OppDatabase
-import com.example.finalskillsync.Room.OppRepository
 import com.example.finalskillsync.databinding.FragmentOppDetailBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

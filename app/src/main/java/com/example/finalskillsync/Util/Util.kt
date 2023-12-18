@@ -1,4 +1,4 @@
-package com.example.finalskillsync.API.Request
+package com.example.finalskillsync.Util
 
 object Util {
     const val Base = "https://type.fit/api/"

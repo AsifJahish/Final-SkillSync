@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalskillsync.Firebase.Models.Chat
+import com.example.finalskillsync.Model.Chat
 import com.example.finalskillsync.databinding.ChatListBinding
 
 class ChatAdapter (private val context: Context,

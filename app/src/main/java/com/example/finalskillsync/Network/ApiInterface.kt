@@ -1,6 +1,6 @@
-package com.example.finalskillsync.API.Request
+package com.example.finalskillsync.Network
 
-import com.example.finalskillsync.API.Model.Quotes
+import com.example.finalskillsync.Model.Quotes
 import retrofit2.Response
 import retrofit2.http.GET
 

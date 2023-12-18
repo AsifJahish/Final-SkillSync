@@ -1,9 +1,9 @@
-package com.example.finalskillsync.Adatpers.FavoriteAdapter
+package com.example.finalskillsync.Adatpers
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.finalskillsync.Model.Opp
+import com.example.finalskillsync.Model.Opportunity
 
-class FavoriteDiffUtil(private val oldList: List<Opp>, private val newList: List<Opp>) : DiffUtil.Callback() {
+class OppDiffUtil(private val oldList: List<Opportunity>, private val newList: List<Opportunity>) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
         return oldList.size
@@ -14,7 +14,10 @@ class FavoriteDiffUtil(private val oldList: List<Opp>, private val newList: List
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].oppId == newList[newItemPosition].oppId
+        val oldOpp = oldList[oldItemPosition]
+        val newOpp = newList[newItemPosition]
+
+        return oldOpp.title == newOpp.title
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
