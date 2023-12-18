@@ -51,6 +51,9 @@ class ChatFragment : Fragment() {
 
             sendMessage()
         }
+
+        val title = arguments?.getString("titleForChat") ?: ""
+        binding.TitleOpp.text= title
         getChat()
         getIDName()
     }
@@ -148,7 +151,7 @@ class ChatFragment : Fragment() {
                         val chat = oppSnapshot.getValue(Chat::class.java)
                         chat?.let {
                             if(it.oppTitle== title){
-                                binding.TitleOpp.text= title
+
                             chatList.add(it)
                         }
                         }
