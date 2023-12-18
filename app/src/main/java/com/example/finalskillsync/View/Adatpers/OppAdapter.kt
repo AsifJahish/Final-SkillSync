@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
-
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalskillsync.Model.Opportunity
 import com.example.finalskillsync.View.Adatpers.DiffUtil.OppDiffUtil
 import com.example.finalskillsync.View.Fragment.ChatFragment
 import com.example.finalskillsync.View.Fragment.FavoriteFragment
-
 import com.example.finalskillsync.View.Fragment.OppDetailFragment
 import com.example.finalskillsync.databinding.OppListBinding
 

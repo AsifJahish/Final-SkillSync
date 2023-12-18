@@ -49,10 +49,8 @@ class HomeActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.homeFrame, fragment)
         fragmentTransaction.commit()
     }
-
-    // Override onBackPressed to prevent navigating back to previous fragments
     override fun onBackPressed() {
         super.onBackPressed()
-        // Do nothing to prevent the default behavior
+
     }
 }

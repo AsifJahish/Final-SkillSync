@@ -72,13 +72,7 @@ class NoteInsertFragment : BottomSheetDialogFragment() {
             noteId?.let {
                 databaseRef.child(it.toString()).setValue(comment)
                     .addOnSuccessListener {
-                        Toast.makeText(
-                            requireContext(),
-                            "Comment saved successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
 
-                        // Dismiss the fragment after successfully saving the comment
                         dismiss()
                     }
                     .addOnFailureListener { exception ->

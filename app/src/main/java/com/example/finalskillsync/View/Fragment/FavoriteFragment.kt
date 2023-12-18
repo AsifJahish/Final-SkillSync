@@ -110,16 +110,8 @@ class FavoriteFragment : Fragment() {
                         linkOpp = (userSnapshot.child("link").value as? String) ?: " "
                         titleOpp = (userSnapshot.child("title").value as? String) ?: " "
 
-                        // Check if any of the essential values are not empty
                         if (oppId.isNotEmpty() && titleOpp.isNotEmpty()
                         ) {
-                          /*  Toast.makeText(
-                                requireContext(),
-                                "${oppId}, $benefit",
-                                Toast.LENGTH_SHORT
-                            ).show()*/
-
-                            // Call addtoFavorite() here, after ensuring that the data is available
                             addtoFavorite()
                         } else {
                             Log.e("FirebaseData", "One or more essential values are empty.")

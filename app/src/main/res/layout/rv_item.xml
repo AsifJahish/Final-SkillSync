@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="22dp"
-    android:background="@android:color/transparent"
+    android:background="@drawable/custom_background"
     android:layout_margin="5dp">
 
 
@@ -20,7 +20,7 @@
             android:textColor="@color/white"
             android:background="@drawable/text_corner"
             android:layout_height="60dp"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:textStyle="bold|italic"
             android:text="You may be disappointed if you fail, but you are doomed if you don’t try."
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,10 +36,9 @@
             android:background="@drawable/text_corner"
             android:textColor="@color/white"
             android:textStyle="bold|italic"
-
             android:text="Author"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,8 +59,7 @@ class FavoriteDetialFragment : Fragment() {
                     for (oppSnapshot in snapshot.children) {
                         val opp = oppSnapshot.getValue(Opportunity::class.java)
                         if (opp != null) {
-                            // Update the views with the retrieved scholarship details
-                            /* ID.text = "ID:\n${scholarship.scholarshipId}"*/
+
                             binding.titlefav.text = opp.title
                             binding.levelfav.text = "Degree:\n${opp.level}"
 
