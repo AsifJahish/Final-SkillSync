@@ -31,6 +31,7 @@
 
         <TextView
             android:layout_marginTop="10dp"
+            android:id="@+id/TitleOpp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Opp Title How are you "

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_background"
     tools:context=".View.Fragment.NoteFragment">
 
 
@@ -13,6 +14,7 @@
         android:orientation="horizontal"
         android:background="#456280"
         android:id="@+id/linear"
+
         android:layout_margin="1dp"
         app:layout_constraintBottom_toTopOf="@+id/noteRecycle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Memo"
             android:gravity="left"
+            android:paddingLeft="20dp"
             android:textSize="29dp"
             android:textColor="@color/white"
             android:textStyle="bold|italic"

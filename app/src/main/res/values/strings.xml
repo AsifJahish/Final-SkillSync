@@ -34,6 +34,9 @@
 
     <!-- strings.xml -->
     <string name="login1">Login</string>
+
+    <!-- strings.xml -->
+    <string name="Add">Add</string>
     <!-- strings.xml -->
     <string name="SignUp">SignUp</string>
 

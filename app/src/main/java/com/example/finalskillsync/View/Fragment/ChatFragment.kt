@@ -148,7 +148,7 @@ class ChatFragment : Fragment() {
                         val chat = oppSnapshot.getValue(Chat::class.java)
                         chat?.let {
                             if(it.oppTitle== title){
-
+                                binding.TitleOpp.text= title
                             chatList.add(it)
                         }
                         }
