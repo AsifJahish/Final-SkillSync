@@ -34,6 +34,7 @@ private lateinit var auth: FirebaseAuth
         dbref = FirebaseDatabase.getInstance().reference.child("Users")
         auth = FirebaseAuth.getInstance()
 
+        logoPicture()
 
         binding.buttonSignUp.setOnClickListener {
             saveUser()
@@ -112,6 +113,17 @@ private lateinit var auth: FirebaseAuth
             .commit()
     }
 
+    private fun logoPicture(){
+        context?.let {
 
+            val url= "https://syncskills.net/wp-content/uploads/2022/03/syncskills-logo-twitter-card.png"
+
+            val imagePath= binding.logoImageView
+
+            Glide.with(this)
+                .load(url)
+                .into(imagePath)
+        };
+    }
 
 }

@@ -34,6 +34,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        logoPicture()
 
         binding.signUP.setOnClickListener {
             fragmentTransaction()
@@ -72,6 +73,18 @@ class LoginFragment : Fragment() {
     }
 
 
+    private fun logoPicture(){
+        context?.let {
+
+            val url= "https://syncskills.net/wp-content/uploads/2022/03/syncskills-logo-twitter-card.png"
+
+            val imagePath= binding.logoImageView
+
+            Glide.with(this)
+                .load(url)
+                .into(imagePath)
+        };
+    }
 
 
 

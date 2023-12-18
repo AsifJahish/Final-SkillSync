@@ -8,6 +8,17 @@
     tools:context=".View.Fragment.LoginFragment">
 
 
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/rectangle_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opportunity" />
+
     <TextView
         android:id="@+id/opportunity"
         android:layout_width="311dp"
@@ -20,9 +31,9 @@
         android:textAppearance="@style/opportunity"
         app:layout_constraintBottom_toTopOf="@+id/rectangle_5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <View
         android:id="@+id/rectangle_5"
@@ -59,13 +70,13 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:textColorHint="@color/black"
-        android:paddingLeft="5dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
-        android:textSize="14dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -82,12 +93,12 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:paddingLeft="5dp"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +162,6 @@
         app:layout_constraintStart_toStartOf="@id/rectangle_5"
         app:layout_constraintTop_toBottomOf="@id/forgotPass"
         app:layout_constraintVertical_bias="0.1" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
