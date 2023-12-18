@@ -70,18 +70,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:paddingLeft="5dp"
         android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="5dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:inputType="textEmailAddress"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
+        app:layout_constraintTop_toBottomOf="@id/chooseOptionRadioGroup"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/resetButton"

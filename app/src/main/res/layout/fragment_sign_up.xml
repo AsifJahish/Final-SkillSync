@@ -36,6 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <View
         android:id="@+id/rectangle_5"
         android:layout_width="match_parent"
@@ -43,11 +44,10 @@
         android:background="@drawable/rectangle_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
 
     <View
         android:id="@+id/pexels_duop"
@@ -72,9 +72,9 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:paddingLeft="5dp"
         android:hint="@string/FullName"
         android:inputType="text"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -83,9 +83,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544" />
-
+        app:layout_constraintTop_toBottomOf="@+id/pexels_duop"
+        app:layout_constraintVertical_bias="0.056" />
 
     <EditText
         android:id="@+id/email"
@@ -95,19 +94,19 @@
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:textColorHint="@color/black"
-        android:paddingLeft="5dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintTop_toBottomOf="@+id/FullName"
+        app:layout_constraintVertical_bias="0.06" />
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -116,20 +115,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:foregroundGravity="center"
-        android:textColorHint="@color/black"
         android:gravity="top"
-        android:paddingLeft="5dp"
         android:hint="@string/PhoneNumber"
         android:inputType="number"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.078" />
 
     <EditText
         android:id="@+id/password"
@@ -137,21 +136,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textColorHint="@color/black"
         android:foregroundGravity="center"
         android:gravity="top"
-        android:paddingLeft="5dp"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:paddingLeft="5dp"
         android:textAppearance="@style/email"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintTop_toBottomOf="@id/phoneNumber"
+        app:layout_constraintVertical_bias="0.087" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSignUp"
@@ -170,8 +169,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintVertical_bias="0.268" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
