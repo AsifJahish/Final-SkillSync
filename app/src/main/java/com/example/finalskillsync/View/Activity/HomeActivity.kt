@@ -11,12 +11,8 @@ import com.example.finalskillsync.View.Fragment.HomeFragment
 import com.example.finalskillsync.View.Fragment.NoteFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class HomeActivity : AppCompatActivity() {
 
-    private val homeFragment = HomeFragment()
-    private val favoriteFragment = FavoriteFragment()
-    private val noteFragment = NoteFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
         val nav= findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        nav.setOnItemSelectedListener{ item ->
+        nav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.favorite -> replaceFragment(FavoriteFragment())
@@ -44,8 +40,6 @@ class HomeActivity : AppCompatActivity() {
             true
         }
         replaceFragment(HomeFragment())
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -53,8 +47,12 @@ class HomeActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.homeFrame, fragment)
-        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 
+    // Override onBackPressed to prevent navigating back to previous fragments
+    override fun onBackPressed() {
+        super.onBackPressed()
+        // Do nothing to prevent the default behavior
+    }
 }
