@@ -49,19 +49,22 @@ class OppDetailFragment : Fragment() {
         val title = arguments?.getString("Title") ?: ""
 
 
+
         retrieveOpp(title)
 
     }
 
     private fun retrieveOpp(oppTitle: String) {
         val databaseref = FirebaseDatabase.getInstance().reference.child("Opportunity")
-        databaseref.addListenerForSingleValueEvent(object : ValueEventListener {
+        val databaseRef = databaseref.child(oppTitle)
+        databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (oppSnapshot in snapshot.children) {
                         val opp = oppSnapshot.getValue(Opportunity::class.java)
-                        if (opp != null && opp.title == oppTitle) {
+                        if (opp != null) {
                             // Update the views with the retrieved scholarship details
+                            /* ID.text = "ID:\n${scholarship.scholarshipId}"*/
                             binding.title.text = opp.title
                             binding.level.text = "Degree:\n${opp.level}"
 
@@ -97,9 +100,6 @@ class OppDetailFragment : Fragment() {
                             }
 
                             binding.deadline.text = "Deadline:\n${opp.deadline}"
-
-                            // Break out of the loop since you found the matching opportunity
-                            break
                         }
                     }
                 }
@@ -114,6 +114,7 @@ class OppDetailFragment : Fragment() {
                 ).show()
             }
         })
+
     }
 
 
