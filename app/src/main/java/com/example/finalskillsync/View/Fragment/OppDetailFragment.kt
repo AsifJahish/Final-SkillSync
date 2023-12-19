@@ -60,9 +60,8 @@ class OppDetailFragment : Fragment() {
                 if (snapshot.exists()) {
                     for (oppSnapshot in snapshot.children) {
                         val opp = oppSnapshot.getValue(Opportunity::class.java)
-                        if (opp != null) {
+                        if (opp != null && opp.title == oppTitle) {
                             // Update the views with the retrieved scholarship details
-                            /* ID.text = "ID:\n${scholarship.scholarshipId}"*/
                             binding.title.text = opp.title
                             binding.level.text = "Degree:\n${opp.level}"
 
@@ -98,6 +97,9 @@ class OppDetailFragment : Fragment() {
                             }
 
                             binding.deadline.text = "Deadline:\n${opp.deadline}"
+
+                            // Break out of the loop since you found the matching opportunity
+                            break
                         }
                     }
                 }
@@ -112,7 +114,6 @@ class OppDetailFragment : Fragment() {
                 ).show()
             }
         })
-
     }
 
 
