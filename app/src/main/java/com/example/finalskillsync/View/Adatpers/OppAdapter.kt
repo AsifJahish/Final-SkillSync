@@ -41,7 +41,7 @@ class OppAdapter(
         fun bind(current: Opportunity, context: Context) {
             binding.apply {
                 titleOpp.text = current.title ?: "N/A"
-                root.setOnClickListener {
+                titleOpp.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString("Title", current.title)
                     val detailFragment = OppDetailFragment()

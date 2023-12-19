@@ -48,8 +48,6 @@ class OppDetailFragment : Fragment() {
 
         val title = arguments?.getString("Title") ?: ""
 
-        // Now you have the title, you can use it as needed
-        Toast.makeText(requireContext(), "Received Title: $title", Toast.LENGTH_SHORT).show()
 
         retrieveOpp(title)
 
