@@ -50,16 +50,18 @@ class FavoriteDetialFragment : Fragment() {
 
         retrieveOpp(title)
     }
+
     private fun retrieveOpp(oppTitle: String) {
         val databaseref = FirebaseDatabase.getInstance().reference.child("Opportunity")
-
-        databaseref.addListenerForSingleValueEvent(object : ValueEventListener {
+        val databaseRef = databaseref.orderByChild("title").equalTo(oppTitle)
+        databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (oppSnapshot in snapshot.children) {
                         val opp = oppSnapshot.getValue(Opportunity::class.java)
                         if (opp != null) {
-
+                            // Update the views with the retrieved scholarship details
+                            /* ID.text = "ID:\n${scholarship.scholarshipId}"*/
                             binding.titlefav.text = opp.title
                             binding.levelfav.text = "Degree:\n${opp.level}"
 
