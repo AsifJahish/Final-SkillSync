@@ -42,11 +42,18 @@ class OppAdapter(
             binding.apply {
                 titleOpp.text = current.title ?: "N/A"
                 titleOpp.setOnClickListener {
+                    val fragment = OppDetailFragment()
+                    val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+
                     val bundle = Bundle()
                     bundle.putString("Title", current.title)
-                    val detailFragment = OppDetailFragment()
-                    detailFragment.arguments = bundle
-                    toDetail()
+                    fragment.arguments = bundle
+
+                    fragmentManager.beginTransaction()
+                        .replace(R.id.homeFrame, fragment)
+                        .addToBackStack(null)
+                        .commit()
+
                 }
                 chat.setOnClickListener {
                     val fragment = ChatFragment()
@@ -88,15 +95,6 @@ class OppAdapter(
 
     }
 
-    private fun toDetail() {
-        val fragment = OppDetailFragment()
-        val fragmentManager = (context as AppCompatActivity).supportFragmentManager
-
-        fragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
 
     fun filterList(filteredList: List<Opportunity>) {
         oppList.clear()
