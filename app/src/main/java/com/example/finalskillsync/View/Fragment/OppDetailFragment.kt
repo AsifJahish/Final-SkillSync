@@ -55,8 +55,7 @@ class OppDetailFragment : Fragment() {
 
     private fun retrieveOpp(oppTitle: String) {
         val databaseref = FirebaseDatabase.getInstance().reference.child("Opportunity")
-        val databaseRef = databaseref.child(oppTitle)
-        databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        databaseref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (oppSnapshot in snapshot.children) {
